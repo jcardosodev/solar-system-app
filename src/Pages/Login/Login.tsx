@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput } from "react-native";
 import { styles } from "./styles";
 import { ImageBack } from "../../components/ImageBackground/ImageBack";
 import { Button } from "../../components/Button/Button";
@@ -12,7 +12,7 @@ export const Login = () => {
         <Text style={styles.label}>E-mail</Text>
         <TextInput 
           style={styles.input}
-          placeholder="Seu e-mail"
+          placeholderTextColor="rgba(255, 255, 255, 0.7)"
           keyboardType="email-address"
           autoCapitalize="none"
           autoCorrect={false}
@@ -21,7 +21,7 @@ export const Login = () => {
         <Text style={styles.label}>Senha</Text>
         <TextInput 
           style={styles.input}
-          placeholder="Sua senha"
+          placeholderTextColor="rgba(255, 255, 255, 0.7)" 
           secureTextEntry={true}
         />
 

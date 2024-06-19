@@ -1,40 +1,50 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    padding: 40,
-  },
-  image: {
-    width: "100%",
-    resizeMode: "contain",
+    alignItems: "center",
+    padding: 20,
   },
   form: {
     marginTop: 40,
+    paddingHorizontal: 20,
+    width: '100%',
+    maxWidth: 400,
+    borderRadius: 10,
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   label: {
-    color: "#d4c2ff",
-    fontFamily: "Poppins_400Regular",
+    color: "#ffffff",
+    marginBottom: 8,
+    textAlign: 'center', // Centraliza o texto do label
   },
   input: {
     height: 54,
-    backgroundColor: "#fff",
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
     borderRadius: 8,
     justifyContent: "center",
     paddingHorizontal: 16,
     marginTop: 4,
     marginBottom: 16,
+    color: '#fff',
   },
-  button : {
+  button: {
     height: 56,
-    borderRadius: 8,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 16,
+    backgroundColor: 'transparent',
   },
   buttonText: {
+    alignSelf: "flex-start",
     color: "#fff",
-    fontSize: 16,
+    fontSize: 24,
+    fontWeight: 'bold',
+    fontFamily: 'Roboto',
   },
 });
