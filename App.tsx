@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet ,ActivityIndicator } from 'react-native';
 import { useFonts } from 'expo-font';
 import { Login } from './src/Pages/Login/Login';
+import { Cadastrar } from './src/Pages/Cadastro/Cadastro';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -15,7 +16,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Login />
+      {/* <Login /> */}
+      <Cadastrar />
     </View>
   );
 }

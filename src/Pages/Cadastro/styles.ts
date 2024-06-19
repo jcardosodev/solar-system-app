@@ -21,7 +21,8 @@ export const styles = StyleSheet.create({
   label: {
     color: "#ffffff",
     marginBottom: 8,
-    textAlign: 'center', // Centraliza o texto do label
+    textAlign: 'center',
+    fontFamily: 'Roboto-Regular',
   },
   input: {
     height: 54,
@@ -32,13 +33,15 @@ export const styles = StyleSheet.create({
     marginTop: 4,
     marginBottom: 16,
     color: '#fff',
+    fontFamily: 'Roboto-Regular',
   },
   buttonContainer: {
     width: '100%',
     maxWidth: 400,
     marginTop: 20,
     paddingHorizontal: 20,
-    justifyContent: 'space-between',
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   button: {
     height: 56,
@@ -46,12 +49,13 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 16,
     backgroundColor: 'transparent',
+    flex: 1,
+    marginHorizontal: 5,
   },
   buttonText: {
-    alignSelf: "flex-start",
     color: "#fff",
     fontSize: 24,
     fontWeight: 'bold',
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Bold',
   },
 });
