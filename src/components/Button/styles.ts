@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#6A1B9A', // Cor padrão do botão
+    backgroundColor: '#6A1B9A',
     marginTop: 16,
   },
   buttonText: {
