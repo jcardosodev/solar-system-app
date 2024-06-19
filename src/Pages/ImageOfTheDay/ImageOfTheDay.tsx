@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { ApodImageryProps, getApodImagery } from "../../services/apodApi/apodApi"
+import { ApodImageryProps, getApodRandomImagery } from "../../services/apodApi/apodApi"
 import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
 import styles from "./ImageOfTheDayStyles";
 
@@ -10,7 +10,7 @@ const ImageOfTheDay = () => {
 
   const fetchData = async () => {
     try {
-      const data = await getApodImagery();
+      const data = await getApodRandomImagery();
       setApodData(data);
     } catch (err) {
       setError("Failed to fetch APOD imagery");
