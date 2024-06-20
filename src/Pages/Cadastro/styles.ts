@@ -1,12 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 20,
-  },
   form: {
     marginTop: 40,
     paddingHorizontal: 20,
@@ -21,18 +15,22 @@ export const styles = StyleSheet.create({
   label: {
     color: "#ffffff",
     marginBottom: 8,
-    textAlign: 'center',
+    textAlign: 'left',
     fontFamily: 'Roboto-Regular',
   },
-  input: {
-    height: 54,
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: "rgba(255, 255, 255, 0.2)",
     borderRadius: 8,
-    justifyContent: "center",
     paddingHorizontal: 16,
     marginTop: 4,
     marginBottom: 16,
+  },
+  input: {
+    flex: 1,  // Flex 1 para garantir que o TextInput preencha o espaço disponível
     color: '#fff',
+    height: 54,
     fontFamily: 'Roboto-Regular',
   },
   buttonContainer: {
