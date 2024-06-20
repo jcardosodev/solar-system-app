@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react"
-import { ApodImageryProps, getApodRandomImagery } from "../../services/apodApi/apodApi"
+import { ApodImageryProps, getApodTodayImagery } from "../../services/apodApi/apodApi"
 import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
 import styles from "./ImageOfTheDayStyles";
 
 const ImageOfTheDay = () => {
-  const [apodData, setApodData] = useState<ApodImageryProps[]>([]);
+  const [apodData, setApodData] = useState<ApodImageryProps | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = async () => {
     try {
-      const data = await getApodRandomImagery();
+      const data = await getApodTodayImagery();
       setApodData(data);
     } catch (err) {
       setError("Failed to fetch APOD imagery");
@@ -37,18 +37,16 @@ const ImageOfTheDay = () => {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={apodData}
-        keyExtractor={(item) => item.date}
-        renderItem={({item}) => (
-          <View style={styles.itemContainer}>
-            <Text style={styles.title}>{item.title}</Text>
-            <Image source={{ uri: item.url }} style={styles.image} />
-            <Text style={styles.explanation}>{item.explanation}</Text>
-            <Text style={styles.copyright}>{item.copyright}</Text>
-          </View>
-        )}
-      />
+      {
+        apodData && (
+          <>
+            <Text style={styles.title}>{apodData.title}</Text>
+            <Image source={{ uri: apodData.url }} style={styles.image} />
+            <Text style={styles.explanation}>{apodData.explanation}</Text>
+            <Text style={styles.copyright}>{apodData.copyright}</Text>
+          </>
+        )
+      }
     </View>
   );
 }
