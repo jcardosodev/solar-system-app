@@ -5,8 +5,8 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     position: 'absolute',
-    top: 200,
-    left: 175,
+    top: 180,
+    left: 165,
   },
   modalBackground: {
     flex: 1,

@@ -2,11 +2,12 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   image: {
-    width: 95,
-    height: 95,
+    width: 150, // Aumente o tamanho da largura da imagem
+    height: 150, // Aumente o tamanho da altura da imagem
     position: 'absolute',
-    top: 88,
-    left: 145,
+    top: 2, // Ajuste a posição para o topo da tela
+    left: '50%', // Centraliza a imagem horizontalmente
+    marginLeft: -75, // Ajusta a margem esquerda para centralizar a imagem com base na nova largura
   },
   modalBackground: {
     flex: 1,
