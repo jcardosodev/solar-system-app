@@ -6,6 +6,7 @@ import { Cadastrar } from './src/Pages/Cadastro/Cadastro';
 import { TelaInicial } from "./src/Pages/TelaInicial";
 import { Routes } from "./src/Routes";
 import SolarSystem from "./src/Pages/SolarSystem/index";
+import ImageOfTheDay from './src/Pages/ImageOfTheDay/ImageOfTheDay';
 import PlanetsTest from './src/Pages/PlanetsTest/PlanetsTest';
 
 export default function App() {
@@ -22,8 +23,9 @@ export default function App() {
     <View style={styles.container}>
       {/* <TelaInicial /> */}
       {/* <SolarSystem/> */}
-      {/* <Login /> */}
       {/* <Cadastrar /> */}
+      {/* <ImageOfTheDay /> */}
+      {/* <Login /> */}
       {/* <PlanetsTest /> */}
     </View>
   );
