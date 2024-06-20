@@ -22,7 +22,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       {/* <TelaInicial /> */}
-      {/* <SolarSystem/> */}
+      <SolarSystemScreen/>
       {/* <Cadastrar /> */}
       {/* <ImageOfTheDay /> */}
       {/* <Login /> */}
