@@ -6,6 +6,7 @@ import { Cadastrar } from './src/Pages/Cadastro/Cadastro';
 import { TelaInicial } from "./src/Pages/TelaInicial";
 import { Routes } from "./src/Routes";
 import SolarSystem from "./src/Pages/SolarSystem/index";
+import PlanetsTest from './src/Pages/PlanetsTest/PlanetsTest';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -19,10 +20,11 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <TelaInicial />
-      <SolarSystem/>
+      {/* <TelaInicial /> */}
+      {/* <SolarSystem/> */}
       {/* <Login /> */}
-      <Cadastrar />
+      {/* <Cadastrar /> */}
+      {/* <PlanetsTest /> */}
     </View>
   );
 };
