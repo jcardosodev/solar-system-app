@@ -18,7 +18,7 @@ export interface ApodImageryProps {
   url: string
 };
 
-export const getApodImagery = async (): Promise<ApodImageryProps[]> => {
+export const getApodRandomImagery = async (): Promise<ApodImageryProps[]> => {
   try {
     const response: AxiosResponse<ApodImageryProps[]> = await apodApi.get("", {
       params: { api_key: apiKey, count: 1 }
@@ -28,5 +28,17 @@ export const getApodImagery = async (): Promise<ApodImageryProps[]> => {
   } catch (err) {
     console.error("Error fetching APOD api:", err);
     throw err;
+  }
+};
+
+export const getApodTodayImagery = async (): Promise<ApodImageryProps> => {
+  try {
+    const response: AxiosResponse<ApodImageryProps> = await apodApi.get("", {
+      params: { api_key: apiKey }
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching APOD imagery:", error);
+    throw error;
   }
 };
