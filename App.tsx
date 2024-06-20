@@ -1,12 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import ImageOfTheDay from './src/Pages/ImageOfTheDay/ImageOfTheDay';
+import React from 'react';
+import { View, StyleSheet ,ActivityIndicator } from 'react-native';
+import { useFonts } from 'expo-font';
+import { Login } from './src/Pages/Login/Login';
+import { Cadastrar } from './src/Pages/Cadastro/Cadastro';
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    'Roboto': require('./src/assets/fonts/Roboto-Regular.ttf'),
+    'Roboto-Bold': require('./src/assets/fonts/Roboto-Bold.ttf'), // Opcional, caso você queira usar negrito
+  });
+
+  if (!fontsLoaded) {
+    return <ActivityIndicator size="large" color="#0000ff" />;
+  }
+
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
-      <ImageOfTheDay />
+      {/* <Login /> */}
+      <Cadastrar />
     </View>
   );
 }
@@ -14,8 +25,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
   },
 });
+
