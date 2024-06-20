@@ -1,6 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+  },
   navigationContainer: {
     position: 'absolute',
     bottom: 20,
@@ -12,7 +17,7 @@ const styles = StyleSheet.create({
   navigationButton: {
     paddingVertical: 10,
     paddingHorizontal: 20,
-
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Adicionei um fundo para os botões ficarem visíveis
     borderRadius: 5,
   },
   leftButton: {
