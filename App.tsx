@@ -1,43 +1,3 @@
-<<<<<<< HEAD
-import React, { useEffect, useState } from 'react';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
-import * as Font from 'expo-font';
-import  TelaInicial  from './src/Pages/TelaInicial';
-import Routes from './src/Routes';
-
-const loadFonts = async () => {
-  await Font.loadAsync({
-    'Roboto-Regular': require('../solar-system-app/src/assets/fonts/Roboto-Regular.ttf'),
-    'PlaywriteAUSA-Regular': require('../solar-system-app/src/assets/fonts/PlaywriteAUSA-Regular.ttf'),
-  });
-};
-
-const App = () => {
-  const [fontsLoaded, setFontsLoaded] = useState(false);
-
-  useEffect(() => {
-    async function load() {
-      await loadFonts();
-      setFontsLoaded(true);
-    }
-    load();
-  }, []);
-
-  if (!fontsLoaded) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" />
-      </View>
-    );
-  }
-
-  return <Routes />;
-};
-
-const styles = StyleSheet.create({
-  loadingContainer: {
-=======
-
 import React from 'react';
 import { View, StyleSheet ,ActivityIndicator } from 'react-native';
 import { useFonts } from 'expo-font';
@@ -45,6 +5,9 @@ import { Login } from './src/Pages/Login/Login';
 import { Cadastrar } from './src/Pages/Cadastro/Cadastro';
 import { TelaInicial } from "./src/Pages/TelaInicial";
 import { Routes } from "./src/Routes";
+import SolarSystemScreen from './src/Pages/SolarSystem';
+import ImageOfTheDay from './src/Pages/ImageOfTheDay/ImageOfTheDay';
+import PlanetsTest from './src/Pages/PlanetsTest/PlanetsTest';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -58,25 +21,24 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <TelaInicial />
+      {/* <TelaInicial /> */}
+      {/* <SolarSystem/> */}
+      {/* <Cadastrar /> */}
+      {/* <ImageOfTheDay /> */}
       {/* <Login /> */}
-      <Cadastrar />
+      {/* <PlanetsTest /> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
->>>>>>> 3e597be22f50eb5fe70da35437d8e74953f725e7
+
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+
   },
 });
-<<<<<<< HEAD
-
-export default App;
 
 
-=======
->>>>>>> 3e597be22f50eb5fe70da35437d8e74953f725e7
+
+
