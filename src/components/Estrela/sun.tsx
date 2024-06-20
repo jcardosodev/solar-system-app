@@ -16,7 +16,7 @@ const Sun: React.FC = () => {
     Animated.loop(
       Animated.timing(rotateValue, {
         toValue: 1,
-        duration: 10000, // Duração de 10 segundos para uma rotação completa
+        duration: 19500, // Duração de 10 segundos para uma rotação completa
         easing: Easing.linear,
         useNativeDriver: true,
       })

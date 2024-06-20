@@ -11,7 +11,7 @@ const Saturn: React.FC = () => {
     Animated.loop(
       Animated.timing(rotation, {
         toValue: 1,
-        duration: 5000,
+        duration: 6000,
         easing: Easing.linear,
         useNativeDriver: true,
       })

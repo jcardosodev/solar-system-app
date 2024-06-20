@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     height: 60,
     position: 'absolute',
     top: -90,
-    left: 168,
+    left: 290,
 
   },
   modalBackground: {
