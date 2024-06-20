@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { View, StyleSheet ,ActivityIndicator } from 'react-native';
 import { useFonts } from 'expo-font';
@@ -6,6 +5,7 @@ import { Login } from './src/Pages/Login/Login';
 import { Cadastrar } from './src/Pages/Cadastro/Cadastro';
 import { TelaInicial } from "./src/Pages/TelaInicial";
 import { Routes } from "./src/Routes";
+import SolarSystem from "./src/Pages/SolarSystem/index";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -20,6 +20,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <TelaInicial />
+      <SolarSystem/>
       {/* <Login /> */}
       <Cadastrar />
     </View>
