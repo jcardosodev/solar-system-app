@@ -1,24 +1,36 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'relative',
-    },
-    image: {
-        width: 400,
-        height: 900,
-    },
-    text: {
-        position: 'absolute',
-        borderRadius: 25,
-        color: 'whitesmoke' ,
-        fontSize: 25,
-        fontFamily: 'Roboto',
-        fontWeight: 'bold',
-        textAlign: 'left',
-        width: 400, // Match the image width
-    },
+  background: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Dark overlay
+  },
+  content: {
+    position: 'absolute',
+    bottom: 55,
+    left: 15,
+  },
+  text: {
+    color: 'rgb(180, 180, 180)',
+    fontSize: 36,
+    fontFamily: 'Roboto-Black',
+  },
+  textBold: {
+    color: 'white',
+    fontSize: 45,
+    fontFamily: 'Roboto-Black',
+    fontWeight: 'bold',
+  },
+  button: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+  },
+  icon: {
+    marginTop: 200,
+  },
 });
