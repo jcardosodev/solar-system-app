@@ -1,10 +1,32 @@
-import React, { useState } from 'react';
-import { View, Image, TouchableOpacity, Modal, Text } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Image, TouchableOpacity, Modal, Text, Animated, Easing } from 'react-native';
 import venusImage from '../../../assets/images/venus.png';
 import styles from '../Venus/VenusStyle';
 
 const Venus: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const rotateValue = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    startImageRotation();
+  }, []);
+
+  const startImageRotation = () => {
+    rotateValue.setValue(0);
+    Animated.loop(
+      Animated.timing(rotateValue, {
+        toValue: 1,
+        duration: 10000, // Duração de 10 segundos para uma rotação completa
+        easing: Easing.linear,
+        useNativeDriver: true,
+      })
+    ).start();
+  };
+
+  const rotation = rotateValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '-360deg'], // Rotação ao contrário
+  });
 
   const handlePress = () => {
     setModalVisible(true);
@@ -17,7 +39,7 @@ const Venus: React.FC = () => {
   return (
     <>
       <TouchableOpacity activeOpacity={0.3} onPress={handlePress}>
-        <Image source={venusImage} style={styles.image} />
+        <Animated.Image source={venusImage} style={[styles.image, { transform: [{ rotate: rotation }] }]} />
       </TouchableOpacity>
 
       <Modal

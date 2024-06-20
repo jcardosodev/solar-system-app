@@ -5,7 +5,7 @@ import { Login } from './src/Pages/Login/Login';
 import { Cadastrar } from './src/Pages/Cadastro/Cadastro';
 import { TelaInicial } from "./src/Pages/TelaInicial";
 import { Routes } from "./src/Routes";
-import SolarSystem from "./src/Pages/SolarSystem/index";
+import SolarSystemScreen from './src/Pages/SolarSystem';
 import ImageOfTheDay from './src/Pages/ImageOfTheDay/ImageOfTheDay';
 import PlanetsTest from './src/Pages/PlanetsTest/PlanetsTest';
 
@@ -34,7 +34,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+
   },
 });

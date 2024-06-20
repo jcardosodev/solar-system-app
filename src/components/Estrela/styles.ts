@@ -2,11 +2,12 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   image: {
-    width: 95,
-    height: 95,
+    width: 150, 
+    height: 150, 
     position: 'absolute',
-    top: 88,
-    left: 145,
+    top: -450, 
+    left: '50%', 
+    marginLeft: -75, 
   },
   modalBackground: {
     flex: 1,
