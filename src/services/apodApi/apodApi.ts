@@ -1,11 +1,10 @@
 // Date must be between Jun 16, 1995 and Jun 19, 2024.
 import axios, { AxiosResponse } from "axios";
-import { apiKey } from "../nasaApiKey/nasaApiKey";
+import { nasaApiKey } from "../nasaApiKey/nasaApiKey";
 
 const apodApi = axios.create({
   baseURL: "https://api.nasa.gov/planetary/apod"
 });
-
 
 export interface ApodImageryProps {
   copyright: string,
@@ -21,9 +20,8 @@ export interface ApodImageryProps {
 export const getApodRandomImagery = async (): Promise<ApodImageryProps[]> => {
   try {
     const response: AxiosResponse<ApodImageryProps[]> = await apodApi.get("", {
-      params: { api_key: apiKey, count: 1 }
+      params: { api_key: nasaApiKey, count: 1 }
     });
-    console.log(response.data)
     return response.data;
   } catch (err) {
     console.error("Error fetching APOD api:", err);
@@ -34,7 +32,7 @@ export const getApodRandomImagery = async (): Promise<ApodImageryProps[]> => {
 export const getApodTodayImagery = async (): Promise<ApodImageryProps> => {
   try {
     const response: AxiosResponse<ApodImageryProps> = await apodApi.get("", {
-      params: { api_key: apiKey }
+      params: { api_key: nasaApiKey }
     });
     return response.data;
   } catch (error) {
