@@ -2,6 +2,7 @@ import { View, Text, TextInput } from "react-native"
 import { styles } from './styles';
 import { ImageBack } from "../../components/ImageBackground/ImageBack"
 import { Button } from "../../components/Button/Button"
+import { PasswordInput } from "../../components/PasswordInput/PasswordInput";
 
 export const Cadastrar = () => {
   return (
@@ -11,31 +12,35 @@ export const Cadastrar = () => {
     <View style={styles.overlay} />
       <View style={styles.form}>
         <Text style={styles.label}>Nome</Text>
-        <TextInput 
-          style={styles.input}
-          keyboardType="default"
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
+        
+        <View style={styles.inputContainer} >
+          <TextInput 
+            style={styles.input}
+            keyboardType="default"
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+        </View>
 
         <Text style={styles.label}>E-mail</Text>
-        <TextInput 
-          style={styles.input}
-          keyboardType="email-address"
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
+
+        <View style={styles.inputContainer} >
+          <TextInput 
+            style={styles.input}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+        </View>
 
         <Text style={styles.label}>Senha</Text>
-        <TextInput 
+        <PasswordInput
           style={styles.input}
-          secureTextEntry={true}
         />
 
         <Text style={styles.label}>Confirme a senha</Text>
-        <TextInput 
+        <PasswordInput
           style={styles.input}
-          secureTextEntry={true}
         />
       </View>
 
