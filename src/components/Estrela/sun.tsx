@@ -5,6 +5,7 @@ import styles from '../../components/Estrela/styles';
 
 const Sun: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [showFullText, setShowFullText] = useState(false);
   const rotateValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -34,6 +35,11 @@ const Sun: React.FC = () => {
 
   const handleCloseModal = () => {
     setModalVisible(false);
+    setShowFullText(false); // Redefinir para mostrar o texto inicial ao fechar a modal
+  };
+
+  const handleReadMore = () => {
+    setShowFullText(true);
   };
 
   return (
@@ -65,27 +71,49 @@ const Sun: React.FC = () => {
                 <Text style={styles.topicTitle}>Temperatura da Superfície: </Text> 
                 5.500 °C
               </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Temperatura do Núcleo: </Text> 
-                15.000.000 °C
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Distância da Terra: </Text> 
-                150.000.000 km
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Rotação: </Text> 
-                25-35 dias 
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Composição: </Text> 
-                74% hidrogênio, 24% hélio, 2% outros elementos
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Curiosidades: </Text> 
-                O Sol é tão grande que cerca de 1,3 milhão de Terras poderiam caber dentro dele. A energia produzida pelo Sol em um segundo poderia abastecer a Terra por 500.000 anos.
-              </Text>
+              {!showFullText && (
+                <>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Temperatura do Núcleo: </Text> 
+                    15.000.000 °C
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Distância da Terra: </Text> 
+                    150.000.000 km
+                  </Text>
+                </>
+              )}
+              {showFullText && (
+                <>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Temperatura do Núcleo: </Text> 
+                    15.000.000 °C
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Distância da Terra: </Text> 
+                    150.000.000 km
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Rotação: </Text> 
+                    25-35 dias 
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Composição: </Text> 
+                    74% hidrogênio, 24% hélio, 2% outros elementos
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Curiosidades: </Text> 
+                    O Sol é tão grande que cerca de 1,3 milhão de Terras poderiam caber dentro dele. A energia produzida pelo Sol em um segundo poderia abastecer a Terra por 500.000 anos.
+                  </Text>
+                </>
+              )}
             </ScrollView>
+            {!showFullText && (
+              <TouchableOpacity onPress={handleReadMore} style={styles.readMoreButton}>
+                <Text style={styles.readMoreButtonText}>Ler mais</Text>
+              </TouchableOpacity>
+            )}
+
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>

@@ -5,6 +5,7 @@ import styles from '../Uranus/UranusStyles';
 
 const Uranus: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [showFullText, setShowFullText] = useState(false);
   const rotateValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const Uranus: React.FC = () => {
     Animated.loop(
       Animated.timing(rotateValue, {
         toValue: 1,
-        duration: 10000, // Duração de 10 segundos para uma rotação completa
+        duration: 10000,
         easing: Easing.linear,
         useNativeDriver: true,
       })
@@ -25,7 +26,7 @@ const Uranus: React.FC = () => {
 
   const rotation = rotateValue.interpolate({
     inputRange: [0, 1],
-    outputRange: ['0deg', '-360deg'], // Rotação ao contrário
+    outputRange: ['0deg', '-360deg'], 
   });
 
   const handlePress = () => {
@@ -34,6 +35,11 @@ const Uranus: React.FC = () => {
 
   const handleCloseModal = () => {
     setModalVisible(false);
+    setShowFullText(false); 
+  };
+
+  const handleReadMore = () => {
+    setShowFullText(true);
   };
 
   return (
@@ -41,7 +47,6 @@ const Uranus: React.FC = () => {
       <TouchableOpacity activeOpacity={0.3} onPress={handlePress}>
         <Animated.Image source={uranusImage} style={[styles.image, { transform: [{ rotate: rotation }] }]} />
       </TouchableOpacity>
-
       <Modal
         animationType="fade"
         transparent={true}
@@ -52,7 +57,6 @@ const Uranus: React.FC = () => {
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Urano</Text>
             <Image source={uranusImage} style={styles.modalImage} />
-            <ScrollView>
               <Text style={styles.modalText}>
                 <Text style={styles.topicTitle}>Diâmetro: </Text>
                 50.724 km
@@ -61,27 +65,47 @@ const Uranus: React.FC = () => {
                 <Text style={styles.topicTitle}>Massa: </Text>
                 8.681 × 10²⁵ kg
               </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Período de Rotação: </Text>
-                17,2 horas
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Período de Translação: </Text>
-                84 anos terrestres
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Temperatura Média: </Text>
-                -195 °C
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Distância do Sol: </Text>
-                2.871 milhões de km
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Curiosidades: </Text>
-                Urano possui uma inclinação axial de 98 graus, o que significa que ele praticamente orbita de lado, e tem 27 luas conhecidas.
-              </Text>
-            </ScrollView>
+              {!showFullText && (
+                <>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Rotação: </Text>
+                    17,2 horas
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Translação: </Text>
+                    84 anos terrestres
+                  </Text>
+                </>
+              )}
+              {showFullText && (
+                <>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Rotação: </Text>
+                    17,2 horas
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Translação: </Text>
+                    84 anos terrestres
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Temperatura Média: </Text>
+                    -195 °C
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Distância do Sol: </Text>
+                    2.871 milhões de km
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Curiosidades: </Text>
+                    Urano possui uma inclinação axial de 98 graus, o que significa que ele praticamente orbita de lado, e tem 27 luas conhecidas.
+                  </Text>
+                </>
+              )}
+            {!showFullText && (
+              <TouchableOpacity onPress={handleReadMore} style={styles.readMoreButton}>
+                <Text style={styles.readMoreButtonText}>Ler mais</Text>
+              </TouchableOpacity>
+            )}
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>

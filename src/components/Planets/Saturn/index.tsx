@@ -5,6 +5,7 @@ import styles from '../../../components/Planets/Saturn/SaturnStyles';
 
 const Saturn: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [showFullText, setShowFullText] = useState(false);
   const rotateValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const Saturn: React.FC = () => {
     Animated.loop(
       Animated.timing(rotateValue, {
         toValue: 1,
-        duration: 10000, // Duração de 10 segundos para uma rotação completa
+        duration: 10000, 
         easing: Easing.linear,
         useNativeDriver: true,
       })
@@ -34,6 +35,11 @@ const Saturn: React.FC = () => {
 
   const handleCloseModal = () => {
     setModalVisible(false);
+    setShowFullText(false); 
+  };
+
+  const handleReadMore = () => {
+    setShowFullText(true);
   };
 
   return (
@@ -52,7 +58,6 @@ const Saturn: React.FC = () => {
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Saturno</Text>
             <Image source={saturnImage} style={styles.modalImage} />
-            <ScrollView>
               <Text style={styles.modalText}>
                 <Text style={styles.topicTitle}>Diâmetro: </Text>
                 116.460 km
@@ -61,27 +66,47 @@ const Saturn: React.FC = () => {
                 <Text style={styles.topicTitle}>Massa: </Text>
                 5.683 × 10²⁶ kg
               </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Período de Rotação: </Text>
-                10,7 horas
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Período de Translação: </Text>
-                29,5 anos terrestres
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Temperatura Média: </Text>
-                -138 °C
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Distância do Sol: </Text>
-                1.429 milhões de km
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Curiosidades: </Text>
-                Saturno tem um total de 82 luas conhecidas, e a maior delas, Titã, é maior que o planeta Mercúrio.
-              </Text>
-            </ScrollView>
+              {!showFullText && (
+                <>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Rotação: </Text>
+                    10,7 horas
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Translação: </Text>
+                    29,5 anos terrestres
+                  </Text>
+                </>
+              )}
+              {showFullText && (
+                <>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Rotação: </Text>
+                    10,7 horas
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Translação: </Text>
+                    29,5 anos terrestres
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Temperatura Média: </Text>
+                    -138 °C
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Distância do Sol: </Text>
+                    1.429 milhões de km
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Curiosidades: </Text>
+                    Saturno tem um total de 82 luas conhecidas, e a maior delas, Titã, é maior que o planeta Mercúrio.
+                  </Text>
+                </>
+              )}
+            {!showFullText && (
+              <TouchableOpacity onPress={handleReadMore} style={styles.readMoreButton}>
+                <Text style={styles.readMoreButtonText}>Ler mais</Text>
+              </TouchableOpacity>
+            )}
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>
