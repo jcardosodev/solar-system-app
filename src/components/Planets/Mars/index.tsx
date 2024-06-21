@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Image, TouchableOpacity, Modal, Text, Animated, Easing } from 'react-native';
+import { View, Image, TouchableOpacity, Modal, Text, Animated, Easing, ScrollView } from 'react-native';
 import marsImage from '../../../assets/images/mars.png';
-import styles from '../Mars/MarsStyles';
+import styles from '../../../components/Planets/Mars/MarsStyles';
 
 const Mars: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -51,9 +51,37 @@ const Mars: React.FC = () => {
         <View style={styles.modalBackground}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Marte</Text>
-            <Text style={styles.modalText}>
-              Marte é o quarto planeta a partir do Sol e é conhecido por sua cor vermelha característica.
-            </Text>
+            <Image source={marsImage} style={styles.modalImage} />
+            <ScrollView>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Diâmetro: </Text>
+                6.779 km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Massa: </Text>
+                6.39 × 10²³ kg
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Rotação: </Text>
+                1.03 dias terrestres
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Translação: </Text>
+                687 dias terrestres
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Temperatura Média: </Text>
+                -63 °C
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Distância do Sol: </Text>
+                227.9 milhões de km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Curiosidades: </Text>
+                Marte tem a maior montanha do sistema solar, Olympus Mons.
+              </Text>
+            </ScrollView>
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>

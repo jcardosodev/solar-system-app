@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Image, TouchableOpacity, Modal, Text, Animated, Easing } from 'react-native';
+import { View, Image, TouchableOpacity, Modal, Text, Animated, Easing, ScrollView } from 'react-native';
 import venusImage from '../../../assets/images/venus.png';
-import styles from '../Venus/VenusStyle';
+import styles from '../../../components/Planets/Venus/VenusStyle';
 
 const Venus: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -51,9 +51,37 @@ const Venus: React.FC = () => {
         <View style={styles.modalBackground}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Vênus</Text>
-            <Text style={styles.modalText}>
-              Vênus é o segundo planeta a partir do Sol. Tem temperaturas extremas e uma atmosfera densa.
-            </Text>
+            <Image source={venusImage} style={styles.modalImage} />
+            <ScrollView>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Diâmetro: </Text> 
+                12.104 km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Massa: </Text> 
+                4.867 × 10²⁴ kg
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Rotação: </Text> 
+                243 dias
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Translação: </Text> 
+                225 dias
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Temperatura Média: </Text> 
+                464 °C
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Distância do Sol: </Text> 
+                108.2 milhões de km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Curiosidades: </Text> 
+                Vênus tem a atmosfera mais densa entre os planetas terrestres, composta principalmente por dióxido de carbono.
+              </Text>
+            </ScrollView>
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>

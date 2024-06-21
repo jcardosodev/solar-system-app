@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, TouchableOpacity, Modal, Text, Animated, Easing } from 'react-native';
+import { View, TouchableOpacity, Modal, Text, Animated, Easing, ScrollView, Image} from 'react-native';
 import neptunImage from '../../../assets/images/neptun.png';
 import styles from '../Neptun/NeptunStyles';
 
@@ -42,6 +42,7 @@ const Neptun: React.FC = () => {
       <TouchableOpacity activeOpacity={0.3} onPress={handlePress}>
         <Animated.Image source={neptunImage} style={[styles.image, { transform: [{ rotate }] }]} />
       </TouchableOpacity>
+
       <Modal
         animationType="fade"
         transparent={true}
@@ -51,9 +52,37 @@ const Neptun: React.FC = () => {
         <View style={styles.modalBackground}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Netuno</Text>
-            <Text style={styles.modalText}>
-              Júpiter, o maior planeta do Sistema Solar, é um gigante gasoso conhecido por sua Grande Mancha Vermelha, uma tempestade anticiclônica colossal que dura há séculos, suas luas numerosas e seu poderoso campo magnético.
-            </Text>
+            <Image source={neptunImage} style={styles.modalImage} />
+            <ScrollView>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Diâmetro: </Text>
+                49.244 km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Massa: </Text>
+                1,024 × 10²⁶ kg
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Rotação: </Text>
+                16,1 horas
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Translação: </Text>
+                165 anos terrestres
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Temperatura Média: </Text>
+                -201 °C
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Distância do Sol: </Text>
+                4.495 milhões de km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Curiosidades: </Text>
+                Netuno possui ventos supersônicos que podem atingir até 2.100 km/h e é conhecido por sua coloração azul intensa devido ao metano em sua atmosfera.
+              </Text>
+            </ScrollView>
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>

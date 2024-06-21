@@ -17,27 +17,40 @@ const styles = StyleSheet.create({
   modalContent: {
     width: 300,
     padding: 20,
-    backgroundColor: 'rgb(50, 8, 74)',
+    backgroundColor: 'rgb(50, 8, 65)',
     borderRadius: 10,
     alignItems: 'center',
   },
   modalTitle: {
     color: '#fff',
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 15,
   },
-  modalText: {
-    color: '#fff',
-    fontSize: 16,
-    textAlign: 'center',
+  modalImage: {
+    width: 100,
+    height: 100,
     marginBottom: 20,
   },
+  modalText: {
+    fontSize: 15,
+    textAlign: 'center',
+    marginBottom: 10,
+    color: '#fff',
+  },
+  topicTitle: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    marginBottom: 5,
+    color: 'rgb(106, 90, 205)'
+  },
+
   closeButton: {
     paddingVertical: 10,
     paddingHorizontal: 20,
-    backgroundColor: '#000',
+    backgroundColor: 'rgb(106, 90, 205)',
     borderRadius: 9,
+    marginTop: 10,
   },
   closeButtonText: {
     color: 'white',

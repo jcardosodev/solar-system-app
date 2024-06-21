@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -90,
     left: 290,
-
   },
   modalBackground: {
     flex: 1,
@@ -18,27 +17,38 @@ const styles = StyleSheet.create({
   modalContent: {
     width: 300,
     padding: 20,
-    backgroundColor: 'rgb(50, 8, 74)',
+    backgroundColor: 'rgb(50, 8, 65)',
     borderRadius: 10,
     alignItems: 'center',
   },
   modalTitle: {
     color: '#fff',
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
+    marginBottom: 15,
+  },
+  modalImage: {
+    width: 100,
+    height: 120,
     marginBottom: 10,
   },
   modalText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 15,
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
+  },
+  topicTitle: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    color: 'rgb(106, 90, 205)',
   },
   closeButton: {
     paddingVertical: 10,
     paddingHorizontal: 20,
-    backgroundColor: '#000',
+    backgroundColor: 'rgb(106, 90, 205)',
     borderRadius: 9,
+    marginTop: 10,
   },
   closeButtonText: {
     color: 'white',

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, TouchableOpacity, Modal, Text, Animated, Easing } from 'react-native';
+import { View, TouchableOpacity, Modal, Text, Animated, Easing, ScrollView, Image } from 'react-native';
 import plutoImage from '../../../assets/images/pluto.png';
 import styles from '../Pluto/PlutoStyles';
 
@@ -52,9 +52,37 @@ const Pluto: React.FC = () => {
         <View style={styles.modalBackground}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Plutão</Text>
-            <Text style={styles.modalText}>
-              Plutão, o nono maior objeto orbitando o Sol e classificado como planeta anão no Cinturão de Kuiper, é um mundo gelado com cinco luas e uma órbita elíptica extrema.
-            </Text>
+            <Image source={plutoImage} style={styles.modalImage} />
+            <ScrollView>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Diâmetro: </Text>
+                2.377 km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Massa: </Text>
+                1,309 × 10²² kg
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Rotação: </Text>
+                153,3 horas (6,39 dias terrestres)
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Translação: </Text>
+                248 anos terrestres
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Temperatura Média: </Text>
+                -229 °C
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Distância do Sol: </Text>
+                5,9 bilhões de km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Curiosidades: </Text>
+                Plutão foi reclassificado como planeta anão em 2006. Ele tem cinco luas conhecidas, sendo Caronte a maior delas, quase metade do tamanho de Plutão.
+              </Text>
+            </ScrollView>
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>
