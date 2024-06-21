@@ -35,35 +35,33 @@ export const Cadastrar = () => {
       password.length < 1 ||
       confirmPassword.length < 1
     ) {
-      Alert.alert("Error", "")
+      Alert.alert("Error", "Um ou mais campos não foram preenchidos.")
+      return;
     }
 
     if (password !== confirmPassword) {
-      Alert.alert("Error", "Passwords do not match");
+      Alert.alert("Error", "Senhas são incompatíveis.");
       return;
     }
 
     const userExists = users.some(user => user.email === email);
-
     if (userExists) {
       Alert.alert("Error", "Usuário já cadastrado. Faça login ou cadastre-se com outro e-mail.");
       return;
     }
 
-    const newUser = {
-      nome: userName,
-      email: email,
-      senha: password
-    };
-
     try {
-      await userApi.post('users', newUser);
+      await userApi.post('users', {
+        nome: userName,
+        email: email,
+        senha: password
+      });
       Alert.alert("Success", "Usuário cadastrado com sucesso.");
       setUserName('');
       setEmail('');
       setPassword('');
       setConfirmPassword('');
-      getAllUsers(); // Refresh the users list
+      getAllUsers();
     } catch (error) {
       console.log("Failed to add user:", error);
       Alert.alert("Error", "Falha ao cadastrar usuário.");
@@ -86,7 +84,7 @@ export const Cadastrar = () => {
             autoCapitalize="none"
             autoCorrect={false}
             onChangeText={setUserName}
-            
+            value={userName}
           />
         </View>
         <Text style={styles.label}>E-mail</Text>

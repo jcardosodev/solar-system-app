@@ -11,6 +11,12 @@
       "nome": "ricardo",
       "email": "ricardo@eletro.com",
       "senha": ""
+    },
+    {
+      "id": "d77e",
+      "nome": "admin",
+      "email": "admin2@email.com",
+      "senha": "123"
     }
   ]
 }
