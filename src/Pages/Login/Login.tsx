@@ -5,6 +5,7 @@ import { ImageBack } from "../../components/ImageBackground/ImageBack";
 import { Button } from "../../components/Button/Button";
 import { PasswordInput } from "../../components/PasswordInput/PasswordInput";
 import { EmailInput } from "../../components/EmailInput/EmailInput";
+import { Rocket } from "../../components/Rocket/Rocket"
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -13,6 +14,10 @@ export const Login = () => {
     <ImageBack 
       source={{ uri: 'https://img.freepik.com/fotos-gratis/papel-de-parede-abstrato-ultra-detalhado-da-nebulosa-4_1562-749.jpg?t=st=1718827600~exp=1718831200~hmac=f81152d8cb7f9c37a9610ad7c6efc9228a5319ce0e71d2f4dfa1b50676046d79&w=740' }}
     >
+      <View style={styles.fullScreen}>
+        <Rocket />
+      </View>
+
       <View style={styles.overlay} />
       <View style={styles.form}>
         <Text style={styles.label}>E-mail</Text>

@@ -25,7 +25,7 @@ export default function App() {
       {/* <SolarSystem/> */}
       {/* <Cadastrar /> */}
       {/* <ImageOfTheDay /> */}
-      {/* <Login /> */}
+      <Login />
       {/* <PlanetsTest /> */}
     </View>
   );
