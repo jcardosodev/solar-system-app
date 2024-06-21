@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Image, TouchableOpacity, Modal, Text, Animated, Easing } from 'react-native';
+import { View, Image, TouchableOpacity, Modal, Text, Animated, Easing, ScrollView } from 'react-native';
 import sunImage from '../../assets/images/sun.png';
 import styles from '../../components/Estrela/styles';
 
@@ -16,7 +16,7 @@ const Sun: React.FC = () => {
     Animated.loop(
       Animated.timing(rotateValue, {
         toValue: 1,
-        duration: 10000, // Duração de 10 segundos para uma rotação completa
+        duration: 19500,
         easing: Easing.linear,
         useNativeDriver: true,
       })
@@ -51,11 +51,41 @@ const Sun: React.FC = () => {
         <View style={styles.modalBackground}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Sol</Text>
-            <Text style={styles.modalText}>
-              O Sol fica a cerca de 150 milhões de km da Terra, tem 333 mil vezes a massa da Terra,
-              e suas dimensões são 110 vezes maiores do que as do nosso planeta. É composto essencialmente
-              pelos gases hidrogênio e hélio.
-            </Text>
+            <Image source={sunImage} style={styles.modalImage} />
+            <ScrollView>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Massa: </Text> 
+                1.989 × 10³⁰ kg
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Diâmetro: </Text> 
+                1.392.700 km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Temperatura da Superfície: </Text> 
+                5.500 °C
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Temperatura do Núcleo: </Text> 
+                15.000.000 °C
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Distância da Terra: </Text> 
+                150.000.000 km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Rotação: </Text> 
+                25-35 dias 
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Composição: </Text> 
+                74% hidrogênio, 24% hélio, 2% outros elementos
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Curiosidades: </Text> 
+                O Sol é tão grande que cerca de 1,3 milhão de Terras poderiam caber dentro dele. A energia produzida pelo Sol em um segundo poderia abastecer a Terra por 500.000 anos.
+              </Text>
+            </ScrollView>
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>

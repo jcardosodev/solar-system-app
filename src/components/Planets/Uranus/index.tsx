@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Image, TouchableOpacity, Modal, Text, Animated, Easing } from 'react-native';
+import { View, TouchableOpacity, Modal, Text, Animated, Easing, ScrollView, Image } from 'react-native';
 import uranusImage from '../../../assets/images/uranus.png';
 import styles from '../Uranus/UranusStyles';
 
@@ -51,9 +51,37 @@ const Uranus: React.FC = () => {
         <View style={styles.modalBackground}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Urano</Text>
-            <Text style={styles.modalText}>
-              Urano, o sétimo planeta do Sol, é um gigante gasoso conhecido por sua inclinação axial única e por ter a atmosfera mais fria do Sistema Solar.
-            </Text>
+            <Image source={uranusImage} style={styles.modalImage} />
+            <ScrollView>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Diâmetro: </Text>
+                50.724 km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Massa: </Text>
+                8.681 × 10²⁵ kg
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Rotação: </Text>
+                17,2 horas
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Translação: </Text>
+                84 anos terrestres
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Temperatura Média: </Text>
+                -195 °C
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Distância do Sol: </Text>
+                2.871 milhões de km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Curiosidades: </Text>
+                Urano possui uma inclinação axial de 98 graus, o que significa que ele praticamente orbita de lado, e tem 27 luas conhecidas.
+              </Text>
+            </ScrollView>
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Image, TouchableOpacity, Modal, Text, Animated, Easing } from 'react-native';
+import { View, Image, TouchableOpacity, Modal, Text, Animated, Easing, ScrollView } from 'react-native';
 import mercuryImage from '../../../assets/images/mercury.png';
 import styles from '../../../components/Planets/Mercury/MercuryStyles';
 
@@ -51,10 +51,37 @@ const Mercury: React.FC = () => {
         <View style={styles.modalBackground}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Mercúrio</Text>
-            <Text style={styles.modalText}>
-              Mercúrio é o menor planeta do Sistema Solar e o mais próximo do Sol.
-              Não tem satélites naturais e é conhecido por suas temperaturas extremas.
-            </Text>
+            <Image source={mercuryImage} style={styles.modalImage} />
+            <ScrollView>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Diâmetro: </Text> 
+                4.880 km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Massa: </Text> 
+                3.285 × 10²³ kg
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Rotação: </Text> 
+                59 dias
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Translação: </Text> 
+                88 dias
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Temperatura Média: </Text> 
+                167 °C
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Distância do Sol: </Text> 
+                57.9 milhões de km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Curiosidades: </Text> 
+                Mercúrio tem um núcleo metálico que ocupa cerca de 75% do seu raio.
+              </Text>
+            </ScrollView>
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>

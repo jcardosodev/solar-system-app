@@ -1,22 +1,32 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, TouchableOpacity, Modal, Text, Animated, Easing } from 'react-native';
+import { View, Image, TouchableOpacity, Modal, Text, Animated, Easing, ScrollView } from 'react-native';
 import saturnImage from '../../../assets/images/saturn.png';
-import styles from '../Saturn/SaturnStyles';
+import styles from '../../../components/Planets/Saturn/SaturnStyles';
 
 const Saturn: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const rotation = useRef(new Animated.Value(0)).current;
+  const rotateValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
+    startImageRotation();
+  }, []);
+
+  const startImageRotation = () => {
+    rotateValue.setValue(0);
     Animated.loop(
-      Animated.timing(rotation, {
+      Animated.timing(rotateValue, {
         toValue: 1,
-        duration: 5000,
+        duration: 10000, // Duração de 10 segundos para uma rotação completa
         easing: Easing.linear,
         useNativeDriver: true,
       })
     ).start();
-  }, [rotation]);
+  };
+
+  const rotation = rotateValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'],
+  });
 
   const handlePress = () => {
     setModalVisible(true);
@@ -26,15 +36,10 @@ const Saturn: React.FC = () => {
     setModalVisible(false);
   };
 
-  const rotate = rotation.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '360deg'],
-  });
-
   return (
     <>
       <TouchableOpacity activeOpacity={0.3} onPress={handlePress}>
-        <Animated.Image source={saturnImage} style={[styles.image, { transform: [{ rotate }] }]} />
+        <Animated.Image source={saturnImage} style={[styles.image, { transform: [{ rotate: rotation }] }]} />
       </TouchableOpacity>
 
       <Modal
@@ -46,9 +51,37 @@ const Saturn: React.FC = () => {
         <View style={styles.modalBackground}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Saturno</Text>
-            <Text style={styles.modalText}>
-              Saturno, o sexto planeta do Sol, é famoso por seus anéis espetaculares feitos de bilhões de partículas de gelo e rochas.
-            </Text>
+            <Image source={saturnImage} style={styles.modalImage} />
+            <ScrollView>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Diâmetro: </Text>
+                116.460 km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Massa: </Text>
+                5.683 × 10²⁶ kg
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Rotação: </Text>
+                10,7 horas
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Translação: </Text>
+                29,5 anos terrestres
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Temperatura Média: </Text>
+                -138 °C
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Distância do Sol: </Text>
+                1.429 milhões de km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Curiosidades: </Text>
+                Saturno tem um total de 82 luas conhecidas, e a maior delas, Titã, é maior que o planeta Mercúrio.
+              </Text>
+            </ScrollView>
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>

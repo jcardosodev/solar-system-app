@@ -3,7 +3,13 @@ import { TextInput, View, TouchableOpacity } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { styles } from "./styles";
 
-export const PasswordInput = ({ style }: { style: any }) => {
+interface PasswordInputProps {
+  style: any,
+  value: string,
+  onChangeText: (text: string) => void,
+}
+
+export const PasswordInput: React.FC<PasswordInputProps> = ({ style, value, onChangeText }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -14,7 +20,8 @@ export const PasswordInput = ({ style }: { style: any }) => {
         autoCapitalize="none"
         autoCorrect={false}
         maxLength={8}
-        
+        value={value}
+        onChangeText={onChangeText}
       />
 
       <TouchableOpacity
