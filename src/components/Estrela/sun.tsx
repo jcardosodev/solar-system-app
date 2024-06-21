@@ -35,7 +35,7 @@ const Sun: React.FC = () => {
 
   const handleCloseModal = () => {
     setModalVisible(false);
-    setShowFullText(false); // Redefinir para mostrar o texto inicial ao fechar a modal
+    setShowFullText(false); 
   };
 
   const handleReadMore = () => {
@@ -47,7 +47,6 @@ const Sun: React.FC = () => {
       <TouchableOpacity activeOpacity={0.3} onPress={handlePress}>
         <Animated.Image source={sunImage} style={[styles.image, { transform: [{ rotate: rotation }] }]} />
       </TouchableOpacity>
-
       <Modal
         animationType="fade"
         transparent={true}
@@ -58,7 +57,6 @@ const Sun: React.FC = () => {
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Sol</Text>
             <Image source={sunImage} style={styles.modalImage} />
-            <ScrollView>
               <Text style={styles.modalText}>
                 <Text style={styles.topicTitle}>Massa: </Text> 
                 1.989 × 10³⁰ kg
@@ -107,13 +105,11 @@ const Sun: React.FC = () => {
                   </Text>
                 </>
               )}
-            </ScrollView>
             {!showFullText && (
               <TouchableOpacity onPress={handleReadMore} style={styles.readMoreButton}>
                 <Text style={styles.readMoreButtonText}>Ler mais</Text>
               </TouchableOpacity>
             )}
-
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>
@@ -123,5 +119,4 @@ const Sun: React.FC = () => {
     </>
   );
 };
-
 export default Sun;
