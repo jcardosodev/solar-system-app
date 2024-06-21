@@ -5,14 +5,17 @@ import { ImageBack } from "../../components/ImageBackground/ImageBack";
 import { Button } from "../../components/Button/Button";
 import { PasswordInput } from "../../components/PasswordInput/PasswordInput";
 import { EmailInput } from "../../components/EmailInput/EmailInput";
+import { Rocket } from "../../components/Rocket/Rocket"
 
 export const Login = () => {
   const [email, setEmail] = useState('');
 
   return (
     <ImageBack 
-      source={{ uri: 'https://img.freepik.com/fotos-gratis/papel-de-parede-abstrato-ultra-detalhado-da-nebulosa-4_1562-749.jpg?t=st=1718827600~exp=1718831200~hmac=f81152d8cb7f9c37a9610ad7c6efc9228a5319ce0e71d2f4dfa1b50676046d79&w=740' }}
+      source={{ uri: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCn02tKW0Mt85bJfTL0hJcYSNWlknpLoaxMPs_3f7w6Nl3FTKlq2EGZ1fyH3g1eFq_HD-JgOLpjSxsth_A3z1cas33LDbwP5x5NBxnyjydpTqA8uoHh_DmMSWtYnIUK5Uzywg8bxXZv_OiKaFm6aINa1YLrRq2pwVvE_jhCunY7FBMpb8byjtcXcdeoQ/s1600/james-webb-wallpaper-4k-thb.webp' }}
     >
+      <Rocket />
+
       <View style={styles.overlay} />
       <View style={styles.form}>
         <Text style={styles.label}>E-mail</Text>
