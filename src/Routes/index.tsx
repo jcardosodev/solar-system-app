@@ -58,12 +58,12 @@ const Routes = () => {
         })}
       >
         <Tab.Screen name="Home" component={HomeStack} options={{ headerShown: false }} />
-        <Tab.Screen name="MarsTrip" component={MarsTrip} />
-        <Tab.Screen name="TripSummary" component={TripSummary} />
-        <Tab.Screen name="Login" component={Login} />
-        <Tab.Screen name="Cadastro" component={Cadastrar} />
-        <Tab.Screen name="SolarSystem" component={SolarSystemScreen} />
-        <Tab.Screen name="ImageOfTheDay" component={ImageOfTheDay} />
+        <Tab.Screen name="MarsTrip" component={MarsTrip} options={{ headerShown: false }} />
+        <Tab.Screen name="TripSummary" component={TripSummary} options={{ headerShown: false }} />
+        <Tab.Screen name="Login" component={Login} options={{ headerShown: false }}/>
+        <Tab.Screen name="Cadastro" component={Cadastrar} options={{ headerShown: false }} />
+        <Tab.Screen name="SolarSystem" component={SolarSystemScreen} options={{ headerShown: false }} />
+        <Tab.Screen name="ImageOfTheDay" component={ImageOfTheDay} options={{ headerShown: false }} />
       </Tab.Navigator>
     </NavigationContainer>
   );
