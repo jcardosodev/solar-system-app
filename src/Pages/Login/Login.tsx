@@ -20,11 +20,9 @@ export const Login = () => {
           value={email}
           onChangeText={setEmail}
         />
-
         <Text style={styles.label}>Senha</Text>
         <PasswordInput style={styles.input}/>
       </View>
-
       <View style={styles.buttonContainer}> 
         <Button
           title="Entrar"
@@ -32,16 +30,13 @@ export const Login = () => {
           style={styles.button}
           textStyle={styles.buttonText}
         />
-
         <Button
           title="Cadastrar"
           onPress={() => alert('Clicou em cadastrar')}
           style={styles.button}
           textStyle={styles.buttonText}
         />
-
       </View>
-
     </ImageBack>
   );
 }
