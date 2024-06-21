@@ -10,6 +10,9 @@ import MarsTrip from '../Pages/MarsTrip/MarsTrip';
 import { Login } from '../Pages/Login/Login';
 import SolarSystemScreen from '../Pages/SolarSystem';
 import TelaInicial from '../Pages/TelaInicial';
+import ImageOfTheDay from '../Pages/ImageOfTheDay/ImageOfTheDay';
+import {Cadastrar} from '../Pages/Cadastro/Cadastro';
+import PlanetsTest from '../Pages/PlanetsTest/PlanetsTest';
 import { RootStackParamList, RootTabParamList } from './types';
 import { TabBarVisibilityProvider, useTabBarVisibility } from '../context/TabBarVisibilityContext';
 import MenuBar from '../components/MenuBar/MenuBar';
@@ -127,6 +130,9 @@ function MyDrawer() {
       <Drawer.Screen name="MarsTrip" component={MarsTripStack} options={{ headerShown: false }} />
       <Drawer.Screen name="Login" component={LoginStack} options={{ headerShown: false }} />
       <Drawer.Screen name="SolarSystem" component={SolarSystemStack} options={{ headerShown: false }} />
+      <Drawer.Screen name="Cadastro" component={Cadastrar} options={{ headerShown: false }} />
+      <Drawer.Screen name="ImageOfTheDay" component={ImageOfTheDay} options={{ headerShown: false }} />
+      <Drawer.Screen name="PlanetsTest" component={PlanetsTest} options={{ headerShown: false }} />
     </Drawer.Navigator>
   );
 }
