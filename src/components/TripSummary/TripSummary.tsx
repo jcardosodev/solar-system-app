@@ -26,6 +26,7 @@ const TripSummary = () => {
       <Text style={styles.text}>Name: {tripData.name}</Text>
       <Text style={styles.text}>Age: {tripData.age}</Text>
       <Text style={styles.text}>Companion: {tripData.companion}</Text>
+      <Text style={styles.text}>Data de partida: {tripData.departureDate}</Text>
       <Text style={styles.text}>Duration: {tripData.duration}</Text>
       <Text style={styles.text}>Distance: {tripData.distance}</Text>
       <Text style={styles.text}>Price: {tripData.price}</Text>
@@ -34,4 +35,3 @@ const TripSummary = () => {
 };
 
 export default TripSummary;
-

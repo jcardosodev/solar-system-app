@@ -5,6 +5,7 @@ import styles from '../../../components/Planets/Mars/MarsStyles';
 
 const Mars: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [showFullText, setShowFullText] = useState(false);
   const rotateValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const Mars: React.FC = () => {
     Animated.loop(
       Animated.timing(rotateValue, {
         toValue: 1,
-        duration: 10000, // Duração de 10 segundos para uma rotação completa
+        duration: 10000, 
         easing: Easing.linear,
         useNativeDriver: true,
       })
@@ -34,6 +35,11 @@ const Mars: React.FC = () => {
 
   const handleCloseModal = () => {
     setModalVisible(false);
+    setShowFullText(false); 
+  };
+
+  const handleReadMore = () => {
+    setShowFullText(true);
   };
 
   return (
@@ -52,7 +58,6 @@ const Mars: React.FC = () => {
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Marte</Text>
             <Image source={marsImage} style={styles.modalImage} />
-            <ScrollView>
               <Text style={styles.modalText}>
                 <Text style={styles.topicTitle}>Diâmetro: </Text>
                 6.779 km
@@ -61,27 +66,47 @@ const Mars: React.FC = () => {
                 <Text style={styles.topicTitle}>Massa: </Text>
                 6.39 × 10²³ kg
               </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Período de Rotação: </Text>
-                1.03 dias terrestres
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Período de Translação: </Text>
-                687 dias terrestres
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Temperatura Média: </Text>
-                -63 °C
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Distância do Sol: </Text>
-                227.9 milhões de km
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Curiosidades: </Text>
-                Marte tem a maior montanha do sistema solar, Olympus Mons.
-              </Text>
-            </ScrollView>
+              {!showFullText && (
+                <>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Rotação: </Text>
+                    1.03 dias terrestres
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Translação: </Text>
+                    687 dias terrestres
+                  </Text>
+                </>
+              )}
+              {showFullText && (
+                <>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Rotação: </Text>
+                    1.03 dias terrestres
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Translação: </Text>
+                    687 dias terrestres
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Temperatura Média: </Text>
+                    -63 °C
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Distância do Sol: </Text>
+                    227.9 milhões de km
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Curiosidades: </Text>
+                    Marte tem a maior montanha do sistema solar, Olympus Mons.
+                  </Text>
+                </>
+              )}
+            {!showFullText && (
+              <TouchableOpacity onPress={handleReadMore} style={styles.readMoreButton}>
+                <Text style={styles.readMoreButtonText}>Ler mais</Text>
+              </TouchableOpacity>
+            )}
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>
