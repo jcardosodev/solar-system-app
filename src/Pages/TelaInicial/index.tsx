@@ -1,14 +1,26 @@
-import React from 'react';
 import { View, Text, ImageBackground, TouchableOpacity } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { styles } from './styles';
 import { RootStackParamList } from '../../Routes/types';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useEffect } from 'react';
+import { useIsFocused } from '@react-navigation/native';
+import { useTabBarVisibility } from '../../context/TabBarVisibilityContext';
 
 const backgroundImage = require('../../assets/images/telainit.jpg');
 
 const TelaInicial = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const isFocused = useIsFocused();
+  const { setTabBarVisible } = useTabBarVisibility();
+
+  useEffect(() => {
+    if (isFocused) {
+      setTabBarVisible(false);
+    } else {
+      setTabBarVisible(true);
+    }
+  }, [isFocused, setTabBarVisible]);
 
   const handlePress = () => {
     navigation.navigate('HomePage');
