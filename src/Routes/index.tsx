@@ -1,7 +1,7 @@
 import React from 'react';
-import { NavigationContainer, RouteProp } from '@react-navigation/native';
-import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
-import { createBottomTabNavigator, BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomePage from '../Pages/HomePage';
 import MarsTrip from '../Pages/MarsTrip/MarsTrip';
@@ -12,6 +12,7 @@ import SolarSystemScreen from '../Pages/SolarSystem';
 import ImageOfTheDay from '../Pages/ImageOfTheDay/ImageOfTheDay';
 import TelaInicial from '../Pages/TelaInicial';
 import { RootStackParamList, RootTabParamList } from './types';
+import { TabBarVisibilityProvider, useTabBarVisibility } from '../context/TabBarVisibilityContext'
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<RootTabParamList>();
@@ -20,17 +21,12 @@ const HomeStack = () => (
   <Stack.Navigator initialRouteName="TelaInicial">
     <Stack.Screen name="TelaInicial" component={TelaInicial} options={{ headerShown: false }} />
     <Stack.Screen name="HomePage" component={HomePage} options={{ headerShown: false }} />
-    <Stack.Screen name="MarsTrip" component={MarsTrip} options={{ headerShown: false }} />
-    <Stack.Screen name="TripSummary" component={TripSummary} options={{ headerShown: false }} />
   </Stack.Navigator>
 );
 
-const useShouldHideTabBar = (route: RouteProp<RootTabParamList, keyof RootTabParamList>): boolean => {
-  const routeName = route.key;
-  return route.name === 'Home' && routeName === 'TelaInicial';
-};
-
 const Routes = () => {
+  const { isTabBarVisible } = useTabBarVisibility();
+
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -58,7 +54,7 @@ const Routes = () => {
           },
           tabBarActiveTintColor: 'tomato',
           tabBarInactiveTintColor: 'gray',
-          tabBarStyle: useShouldHideTabBar(route) ? { display: 'none' } : {},
+          tabBarStyle: isTabBarVisible ? {} : { display: 'none' },
         })}
       >
         <Tab.Screen name="Home" component={HomeStack} options={{ headerShown: false }} />
@@ -73,4 +69,10 @@ const Routes = () => {
   );
 };
 
-export default Routes;
+const App = () => (
+  <TabBarVisibilityProvider>
+    <Routes />
+  </TabBarVisibilityProvider>
+);
+
+export default App;
