@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Image, TouchableOpacity, Modal, Text, Animated, Easing } from 'react-native';
+import { View, Image, TouchableOpacity, Modal, Text, Animated, Easing, ScrollView } from 'react-native';
 import earthImage from '../../../assets/images/earth.png';
 import styles from '../Earth/EarthStyles';
 
@@ -16,7 +16,7 @@ const Earth: React.FC = () => {
     Animated.loop(
       Animated.timing(rotateValue, {
         toValue: 1,
-        duration: 10000, // Duração de 10 segundos para uma rotação completa
+        duration: 10000,
         easing: Easing.linear,
         useNativeDriver: true,
       })
@@ -51,9 +51,41 @@ const Earth: React.FC = () => {
         <View style={styles.modalBackground}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Terra</Text>
-            <Text style={styles.modalText}>
-              A Terra é o terceiro planeta a partir do Sol e o único conhecido por abrigar vida.
-            </Text>
+            <Image source={earthImage} style={styles.modalImage} />
+            <ScrollView>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Massa: </Text> 
+                5.972 × 10²⁴ kg
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Diâmetro: </Text> 
+                12.742 km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Circunferência: </Text> 
+                40.075 km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Distância do Sol: </Text> 
+                149.6 milhões de km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Rotação: </Text> 
+                24 horas
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Translação: </Text> 
+                365.25 dias
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Composição Atmosférica: </Text> 
+                78% nitrogênio, 21% oxigênio, 1% outros gases
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Curiosidades: </Text> 
+                A Terra é o único planeta conhecido que possui água líquida em sua superfície e abriga uma biosfera diversificada.
+              </Text>
+            </ScrollView>
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>

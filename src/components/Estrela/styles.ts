@@ -2,12 +2,12 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   image: {
-    width: 150, 
-    height: 150, 
+    width: 190,
+    height: 190,
     position: 'absolute',
-    top: -450, 
-    left: '50%', 
-    marginLeft: -75, 
+    top: -475,
+    left: '45%',
+    marginLeft: -75,
   },
   modalBackground: {
     flex: 1,
@@ -18,27 +18,39 @@ const styles = StyleSheet.create({
   modalContent: {
     width: 300,
     padding: 20,
-    backgroundColor: 'rgb(50, 8, 74)',
+    backgroundColor: 'rgb(50, 8, 65)',
     borderRadius: 10,
     alignItems: 'center',
   },
   modalTitle: {
     color: '#fff',
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 15,
+  },
+  modalImage: {
+    width: 100,
+    height: 100,
+    marginBottom: 20,
   },
   modalText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 15,
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
+  },
+  topicTitle: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    marginBottom: 5,
+    color: 'rgb(106, 90, 205)'
   },
   closeButton: {
     paddingVertical: 10,
     paddingHorizontal: 20,
-    backgroundColor: '#000',
+    backgroundColor: 'rgb(106, 90, 205)',
     borderRadius: 9,
+    marginTop: 10,
   },
   closeButtonText: {
     color: 'white',

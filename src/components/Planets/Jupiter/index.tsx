@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Image, TouchableOpacity, Modal, Text, Animated, Easing } from 'react-native';
+import { View, Image, TouchableOpacity, Modal, Text, Animated, Easing, ScrollView } from 'react-native';
 import jupiterImage from '../../../assets/images/jupiter.png';
-import styles from '../Jupiter/JupiterStyles';
+import styles from '../../../components/Planets/Jupiter/JupiterStyles';
 
 const Jupiter: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -41,6 +41,7 @@ const Jupiter: React.FC = () => {
       <TouchableOpacity activeOpacity={0.3} onPress={handlePress}>
         <Animated.Image source={jupiterImage} style={[styles.image, { transform: [{ rotate: rotation }] }]} />
       </TouchableOpacity>
+
       <Modal
         animationType="fade"
         transparent={true}
@@ -50,9 +51,37 @@ const Jupiter: React.FC = () => {
         <View style={styles.modalBackground}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Júpiter</Text>
-            <Text style={styles.modalText}>
-              Júpiter, o maior planeta do Sistema Solar, é um gigante gasoso conhecido por sua Grande Mancha Vermelha, uma tempestade anticiclônica colossal que dura há séculos, suas luas numerosas e seu poderoso campo magnético.
-            </Text>
+            <Image source={jupiterImage} style={styles.modalImage} />
+            <ScrollView>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Diâmetro: </Text>
+                139.820 km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Massa: </Text>
+                1.898 × 10²⁷ kg
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Rotação: </Text>
+                9,93 horas
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Período de Translação: </Text>
+                11,86 anos terrestres
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Temperatura Média: </Text>
+                -108 °C
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Distância do Sol: </Text>
+                778.5 milhões de km
+              </Text>
+              <Text style={styles.modalText}>
+                <Text style={styles.topicTitle}>Curiosidades: </Text>
+                Júpiter tem a maior lua do sistema solar, Ganimedes, e possui mais de 75 luas conhecidas.
+              </Text>
+            </ScrollView>
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>
