@@ -7,12 +7,19 @@ import { PasswordInput } from "../../components/PasswordInput/PasswordInput";
 import { EmailInput } from "../../components/EmailInput/EmailInput";
 import { userApi } from "../../services/UserApi/UserApi";
 
+interface User {
+  id: string;
+  nome: string;
+  email: string;
+  senha: string;
+}
+
 export const Cadastrar = () => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   const getAllUsers = async () => {
     try {
