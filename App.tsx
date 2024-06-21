@@ -1,13 +1,7 @@
 import React from 'react';
-import { View, StyleSheet ,ActivityIndicator } from 'react-native';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { useFonts } from 'expo-font';
-import { Login } from './src/Pages/Login/Login';
-import { Cadastrar } from './src/Pages/Cadastro/Cadastro';
-import { TelaInicial } from "./src/Pages/TelaInicial";
-import { Routes } from "./src/Routes";
-import SolarSystem from "./src/Pages/SolarSystem/index";
-import ImageOfTheDay from './src/Pages/ImageOfTheDay/ImageOfTheDay';
-import PlanetsTest from './src/Pages/PlanetsTest/PlanetsTest';
+import Routes from './src/Routes';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -21,12 +15,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {/* <TelaInicial /> */}
-      {/* <SolarSystem/> */}
-      {/* <Cadastrar /> */}
-      {/* <ImageOfTheDay /> */}
-      <Login />
-      {/* <PlanetsTest /> */}
+
+      <Routes />
     </View>
   );
 };
@@ -34,7 +24,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });

@@ -1,19 +1,34 @@
 import React, { useRef, useEffect } from 'react';
 import { Animated, View } from 'react-native';
-import { styles } from './styles'
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faRocket } from '@fortawesome/free-solid-svg-icons';
+import { styles } from './styles';
+
 
 export const Rocket = () => {
-  const translateY = useRef(new Animated.Value(800)).current; // Começa fora da tela (parte inferior)
+  const translateY = useRef(new Animated.Value(800)).current;
 
   useEffect(() => {
-    // Animação para mover o foguete para cima até sair da tela
+    const loopAnimation = Animated.loop(
+      Animated.sequence([
+        Animated.timing(translateY, {
+          toValue: -800,
+          duration: 5000,
+          useNativeDriver: true,
+        }),
+
     Animated.timing(translateY, {
-      toValue: -100, // Mover o foguete para fora da tela na parte superior
-      duration: 5000, // Duração da animação
-      useNativeDriver: true, // Usa o driver nativo para animações suaves
-    }).start();
-  }, []);
+      toValue: 800,
+      duration: 0,
+      useNativeDriver: true,
+    }),
+
+    Animated.delay(3000),
+      ])
+    );
+
+    loopAnimation.start();
+  }, [translateY]);
 
   return (
     <View style={styles.rocketContainer}>
@@ -23,13 +38,15 @@ export const Rocket = () => {
           {
             transform: [
               { translateY: translateY },
+              { rotate: '-45deg'}
             ]
           }
         ]}
       >
-        <FontAwesome 
-          name="rocket"
+        <FontAwesomeIcon 
+          icon={faRocket}
           size={50}
+          style={styles.rocketIcon}
         />
       </Animated.View>
     </View>
