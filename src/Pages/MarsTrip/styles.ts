@@ -60,9 +60,22 @@ export const styles = StyleSheet.create({
     buttonText: {
       color: 'white',
       marginRight: 10,
+      
     },
     icon: {
       width: 20,
       height: 20,
+    },
+    dateButtonText: {
+      color: 'white',
+      
+    },
+    dateButton: {
+      padding: 10,
+      backgroundColor: '#007BFF',
+      borderRadius: 5,
+      marginBottom: 20,
+      alignItems: 'center',
+      justifyContent: 'center',
     },
   });

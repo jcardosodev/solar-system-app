@@ -5,6 +5,7 @@ import styles from '../Earth/EarthStyles';
 
 const Earth: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [showFullText, setShowFullText] = useState(false);
   const rotateValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -34,6 +35,11 @@ const Earth: React.FC = () => {
 
   const handleCloseModal = () => {
     setModalVisible(false);
+    setShowFullText(false); 
+  };
+
+  const handleReadMore = () => {
+    setShowFullText(true);
   };
 
   return (
@@ -41,7 +47,6 @@ const Earth: React.FC = () => {
       <TouchableOpacity activeOpacity={0.3} onPress={handlePress}>
         <Animated.Image source={earthImage} style={[styles.image, { transform: [{ rotate: rotation }] }]} />
       </TouchableOpacity>
-
       <Modal
         animationType="fade"
         transparent={true}
@@ -52,7 +57,6 @@ const Earth: React.FC = () => {
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Terra</Text>
             <Image source={earthImage} style={styles.modalImage} />
-            <ScrollView>
               <Text style={styles.modalText}>
                 <Text style={styles.topicTitle}>Massa: </Text> 
                 5.972 × 10²⁴ kg
@@ -65,27 +69,35 @@ const Earth: React.FC = () => {
                 <Text style={styles.topicTitle}>Circunferência: </Text> 
                 40.075 km
               </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Distância do Sol: </Text> 
-                149.6 milhões de km
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Período de Rotação: </Text> 
-                24 horas
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Período de Translação: </Text> 
-                365.25 dias
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Composição Atmosférica: </Text> 
-                78% nitrogênio, 21% oxigênio, 1% outros gases
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Curiosidades: </Text> 
-                A Terra é o único planeta conhecido que possui água líquida em sua superfície e abriga uma biosfera diversificada.
-              </Text>
-            </ScrollView>
+              {showFullText && (
+                <>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Distância do Sol: </Text> 
+                    149.6 milhões de km
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Rotação: </Text> 
+                    24 horas
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Translação: </Text> 
+                    365.25 dias
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Composição Atmosférica: </Text> 
+                    78% nitrogênio, 21% oxigênio, 1% outros gases
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Curiosidades: </Text> 
+                    A Terra é o único planeta conhecido que possui água líquida em sua superfície e abriga uma biosfera diversificada.
+                  </Text>
+                </>
+              )}
+            {!showFullText && (
+              <TouchableOpacity onPress={handleReadMore} style={styles.readMoreButton}>
+                <Text style={styles.readMoreButtonText}>Ler mais</Text>
+              </TouchableOpacity>
+            )}
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>
