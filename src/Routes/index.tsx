@@ -122,7 +122,7 @@ function MyDrawer() {
         },
         headerTransparent: true,
         drawerContentStyle: {
-          backgroundColor: 'rgba(0,0,0,0.5)',
+          backgroundColor: 'rgba(0,0,0,0)',
         },
       }}
     >
