@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, ImageBackground, TouchableOpacity, Image } from 'react-native';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
@@ -16,11 +17,21 @@ const MarsTrip = () => {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [companion, setCompanion] = useState('');
+  const [date, setDate] = useState(new Date());
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const formatDate = (date: Date) => {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
 
   const tripDetails = {
     duration: '6 meses',
     distance: '225 Milhões de km',
     price: 'R$2.500,000',
+    departureDate: formatDate(date),
   };
 
   const handleSave = async () => {
@@ -36,6 +47,21 @@ const MarsTrip = () => {
     } catch (error) {
       console.error('Error saving data', error);
     }
+  };
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (selectedDate: Date | undefined) => {
+    if (selectedDate) {
+      setDate(selectedDate);
+    }
+    hideDatePicker();
   };
 
   return (
@@ -57,6 +83,17 @@ const MarsTrip = () => {
           value={age}
           onChangeText={setAge}
           keyboardType="numeric"
+        />
+        <Text style={styles.subtitle}>Data de partida</Text>
+        <TouchableOpacity onPress={showDatePicker} style={styles.dateButton}>
+          <Text style={styles.dateButtonText}>{formatDate(date)}</Text>
+        </TouchableOpacity>
+        <DateTimePickerModal
+          isVisible={isDatePickerVisible}
+          mode="date"
+          onConfirm={handleConfirm}
+          onCancel={hideDatePicker}
+          isDarkModeEnabled={true}
         />
         <Text style={styles.subtitle}>Choose Your Companion</Text>
         <View style={styles.companionContainer}>

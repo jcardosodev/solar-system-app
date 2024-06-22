@@ -13,7 +13,7 @@ export const Rocket = () => {
       Animated.sequence([
         Animated.timing(translateY, {
           toValue: -800,
-          duration: 5000,
+          duration: 8000,
           useNativeDriver: true,
         }),
 
