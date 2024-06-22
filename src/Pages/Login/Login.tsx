@@ -22,7 +22,6 @@ export const Login = () => {
     try {
       const response = await userApi.get('users');
       setUsers(response.data);
-      console.log(response.data)
     } catch (error) {
       console.log("Failed to fetch users:", error);
     }
