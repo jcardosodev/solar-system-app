@@ -130,7 +130,7 @@ function MyDrawer() {
       <Drawer.Screen name="MarsTrip" component={MarsTripStack} options={{ headerShown: false }} />
       <Drawer.Screen name="Login" component={LoginStack} options={{ headerShown: false }} />
       <Drawer.Screen name="SolarSystem" component={SolarSystemStack} options={{ headerShown: false }} />
-      <Drawer.Screen name="Cadastro" component={Cadastrar} options={{ headerShown: false }} />
+      <Drawer.Screen name="Cadastrar" component={Cadastrar} options={{ headerShown: false }} />
       <Drawer.Screen name="ImageOfTheDay" component={ImageOfTheDay} options={{ headerShown: false }} />
       <Drawer.Screen name="PlanetsTest" component={PlanetsTest} options={{ headerShown: false }} />
     </Drawer.Navigator>

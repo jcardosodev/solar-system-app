@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { RootTabParamList } from '../../Routes/types';
 import { View, Text } from "react-native";
 import { styles } from "./styles";
 import { ImageBack } from "../../components/ImageBackground/ImageBack";
@@ -9,6 +11,8 @@ import { Rocket } from "../../components/Rocket/Rocket"
 
 export const Login = () => {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigation = useNavigation<NavigationProp<RootTabParamList>>();
 
   return (
     <ImageBack 
@@ -24,7 +28,11 @@ export const Login = () => {
           onChangeText={setEmail}
         />
         <Text style={styles.label}>Senha</Text>
-        <PasswordInput style={styles.input}/>
+        <PasswordInput 
+          style={styles.input}
+          value={password}
+          onChangeText={setPassword}
+        />
       </View>
       <View style={styles.buttonContainer}> 
         <Button
@@ -35,7 +43,7 @@ export const Login = () => {
         />
         <Button
           title="Cadastrar"
-          onPress={() => alert('Clicou em cadastrar')}
+          onPress={() => navigation.navigate('Cadastrar')}
           style={styles.button}
           textStyle={styles.buttonText}
         />
