@@ -31,18 +31,18 @@ export const Login = () => {
   }, []);
 
   const handleEntrarClicked = () => {
-    const userFound = users.find(
+    const foundUser = users.find(
       user => user.email === email &&
       user.senha === password
     )
 
-    if (!userFound) {
+    if (!foundUser) {
       Alert.alert("Error", "E-mail ou senha incorretos.");
       return;
     }
 
-    setUsuarioLogado(userFound);
-    Alert.alert('Login efetuado com sucesso.')
+    setUsuarioLogado(foundUser);
+    Alert.alert(`Login efetuado com sucesso. Bem vindo(a) ${foundUser.nome}!`)
   }
 
   return (
