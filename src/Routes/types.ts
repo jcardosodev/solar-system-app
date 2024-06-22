@@ -13,4 +13,5 @@ export type RootTabParamList = {
   MarsTrip: undefined;
   Login: undefined;
   SolarSystem: undefined;
+  Cadastrar: undefined;
 };
