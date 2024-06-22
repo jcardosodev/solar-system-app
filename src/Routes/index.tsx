@@ -13,6 +13,7 @@ import ImageOfTheDay from '../Pages/ImageOfTheDay/ImageOfTheDay';
 import TelaInicial from '../Pages/TelaInicial';
 import { RootStackParamList, RootTabParamList } from './types';
 import { TabBarVisibilityProvider, useTabBarVisibility } from '../context/TabBarVisibilityContext'
+import { UserProvider } from '../context/UserContext';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<RootTabParamList>();

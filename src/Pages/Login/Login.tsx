@@ -1,14 +1,49 @@
-import React, { useState } from "react";
-import { View, Text } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, Alert } from "react-native";
 import { styles } from "./styles";
 import { ImageBack } from "../../components/ImageBackground/ImageBack";
 import { Button } from "../../components/Button/Button";
 import { PasswordInput } from "../../components/PasswordInput/PasswordInput";
 import { EmailInput } from "../../components/EmailInput/EmailInput";
 import { Rocket } from "../../components/Rocket/Rocket"
+import { useUserContext } from "../../context/UserContext";
+import { User } from "../../types/types";
+import { userApi } from "../../services/UserApi/UserApi";
 
 export const Login = () => {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [users, setUsers] = useState<User[]>([]);
+  const { setUsuarioLogado } = useUserContext();
+
+  const getAllUsers = async () => {
+    try {
+      const response = await userApi.get('users');
+      setUsers(response.data);
+      console.log(response.data)
+    } catch (error) {
+      console.log("Failed to fetch users:", error);
+    }
+  };
+
+  useEffect(() => {
+    getAllUsers();
+  }, []);
+
+  const handleEntrarClicked = () => {
+    const userFound = users.find(
+      user => user.email === email &&
+      user.senha === password
+    )
+
+    if (!userFound) {
+      Alert.alert("Error", "E-mail ou senha incorretos.");
+      return;
+    }
+
+    setUsuarioLogado(userFound);
+    Alert.alert('Login efetuado com sucesso.')
+  }
 
   return (
     <ImageBack 
@@ -24,12 +59,12 @@ export const Login = () => {
           onChangeText={setEmail}
         />
         <Text style={styles.label}>Senha</Text>
-        <PasswordInput style={styles.input}/>
+        <PasswordInput style={styles.input} value={password} onChangeText={setPassword}/>
       </View>
       <View style={styles.buttonContainer}> 
         <Button
           title="Entrar"
-          onPress={() => alert('Clicou em entrar')}
+          onPress={handleEntrarClicked}
           style={styles.button}
           textStyle={styles.buttonText}
         />
