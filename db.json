@@ -5,18 +5,6 @@
       "nome": "admin",
       "email": "admin@email.com",
       "senha": "admin"
-    },
-    {
-      "id": "3c7f",
-      "nome": "ricardo",
-      "email": "ricardo@eletro.com",
-      "senha": ""
-    },
-    {
-      "id": "d77e",
-      "nome": "admin",
-      "email": "admin2@email.com",
-      "senha": "123"
     }
   ]
 }

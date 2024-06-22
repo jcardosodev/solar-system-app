@@ -16,6 +16,7 @@ import PlanetsTest from '../Pages/PlanetsTest/PlanetsTest';
 import { RootStackParamList, RootTabParamList } from './types';
 import { TabBarVisibilityProvider, useTabBarVisibility } from '../context/TabBarVisibilityContext';
 import MenuBar from '../components/MenuBar/MenuBar';
+import { UserProvider } from '../context/UserContext';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator<RootStackParamList>();
