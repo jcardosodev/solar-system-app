@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
-import { ApodImageryProps, getApodTodayImagery } from "../../services/apodApi/apodApi"
-import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { ActivityIndicator, Image, Text, View } from "react-native";
 import styles from "./ImageOfTheDayStyles";
+import { ApodImageryProps, getApodTodayImagery } from "../../services/apodApi/apodApi";
+import { translateText, summarizeText } from "../../utils/textUtils/textUtils";
 
 const ImageOfTheDay = () => {
   const [apodData, setApodData] = useState<ApodImageryProps | null>(null);
@@ -11,7 +12,9 @@ const ImageOfTheDay = () => {
   const fetchData = async () => {
     try {
       const data = await getApodTodayImagery();
-      setApodData(data);
+      const translatedExplanation = await translateText(data.explanation, "pt");
+      const summarizedExplanation = summarizeText(translatedExplanation);
+      setApodData({ ...data, explanation: summarizedExplanation });
     } catch (err) {
       setError("Failed to fetch APOD imagery");
     } finally {
@@ -42,8 +45,12 @@ const ImageOfTheDay = () => {
           <>
             <Text style={styles.title}>{apodData.title}</Text>
             <Image source={{ uri: apodData.url }} style={styles.image} />
-            <Text style={styles.explanation}>{apodData.explanation}</Text>
-            <Text style={styles.copyright}>{apodData.copyright}</Text>
+            <View style={styles.explanationContainer}>
+              <Text style={styles.explanation}>{apodData.explanation}</Text>
+            </View>
+            {apodData.copyright && (
+              <Text style={styles.copyright}>© {apodData.copyright}</Text>
+            )}
           </>
         )
       }
@@ -51,4 +58,4 @@ const ImageOfTheDay = () => {
   );
 }
 
-export default ImageOfTheDay
+export default ImageOfTheDay;
