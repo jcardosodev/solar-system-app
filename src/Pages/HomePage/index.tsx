@@ -5,26 +5,22 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const HomePage = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [innerModalVisible, setInnerModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [expanded, setExpanded] = useState(false); 
 
   const openModal = () => {
     setLoading(true);
     setModalVisible(true);
-    setTimeout(() => setLoading(false), 1000); // Simulate a loading delay
+    setTimeout(() => setLoading(false), 1000); 
   };
 
   const closeModal = () => {
     setModalVisible(false);
-    setInnerModalVisible(false);
+    setExpanded(false); 
   };
 
-  const openInnerModal = () => {
-    setInnerModalVisible(true);
-  };
-
-  const closeInnerModal = () => {
-    setInnerModalVisible(false);
+  const toggleExpand = () => {
+    setExpanded(!expanded); 
   };
 
   return (
@@ -72,41 +68,25 @@ const HomePage = () => {
                 <Image source={require('../../assets/images/MoonHomePage.jpg')} style={styles.modalImage} />
                 <View style={styles.modalTextContainer}>
                   <Text style={styles.modalTitle}>A Lua</Text>
-                  <Text style={styles.modalText}>A Lua é o único satélite natural da Terra.</Text>
-                  <Text style={styles.modalText}>
-                    É o quinto maior satélite do Sistema Solar e 
-                    o maior entre os satélites planetários em relação 
-                    ao tamanho do planeta que orbita.
+                  <Text style={styles.modalText}>{expanded ? (
+                    `A Lua é o único satélite natural da Terra. É o quinto maior satélite do Sistema Solar e o maior entre os satélites planetários em relação ao tamanho do planeta que orbita.
+          O Apollo 11 dos Estados Unidos foi a primeira missão tripulada a pousar na Lua, em 20 de julho de 1969.
+          O primeiro objeto feito pelo homem a chegar na Lua foi o Luna 2 da União Soviética, em 13 de setembro de 1959.`
+                  ) : (
+                    `A Lua é o único satélite natural da Terra. É o quinto maior satélite do Sistema Solar e o maior entre os satélites planetários em relação ao tamanho do planeta que orbita.`
+                  )}
                   </Text>
-                  <Text style={styles.modalText}>
-                    O Apollo 11 dos Estados Unidos foi a primeira missão tripulada a pousar na Lua, em 20 de julho de 1969.
-                  </Text>
-                  <TouchableOpacity style={styles.readMoreButton} onPress={openInnerModal}>
-                    <Text style={styles.readMoreButtonText}>Ler mais</Text>
-                  </TouchableOpacity>
+                  {!expanded && (
+                    <TouchableOpacity style={styles.readMoreButton} onPress={toggleExpand}>
+                      <Text style={styles.readMoreButtonText}>Ler mais</Text>
+                    </TouchableOpacity>
+                  )}
                 </View>
                 <TouchableOpacity style={styles.closeButton} onPress={closeModal}>
                   <Text style={styles.closeButtonText}>Fechar</Text>
                 </TouchableOpacity>
               </>
             )}
-          </View>
-        </View>
-      </Modal>
-
-      <Modal visible={innerModalVisible} transparent={true} animationType="slide">
-        <View style={styles.modalContainer}>
-          <View style={styles.innerModalContent}>
-            <Text style={styles.modalTitle}>Descrição Detalhada</Text>
-            <Text style={styles.modalText}>
-              A Lua é o único satélite natural da Terra. É o quinto maior satélite do Sistema Solar e o maior entre os satélites planetários em relação ao tamanho do planeta que orbita.
-            </Text>
-            <Text style={styles.modalText}>
-              O primeiro objeto feito pelo homem a chegar na Lua foi o Luna 2 da União Soviética, em 13 de setembro de 1959. O Apollo 11 dos Estados Unidos foi a primeira missão tripulada a pousar na Lua, em 20 de julho de 1969.
-            </Text>
-            <TouchableOpacity style={styles.closeButton} onPress={closeInnerModal}>
-              <Text style={styles.closeButtonText}>Fechar</Text>
-            </TouchableOpacity>
           </View>
         </View>
       </Modal>
