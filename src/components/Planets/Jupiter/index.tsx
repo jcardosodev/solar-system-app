@@ -5,6 +5,7 @@ import styles from '../../../components/Planets/Jupiter/JupiterStyles';
 
 const Jupiter: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [showFullText, setShowFullText] = useState(false);
   const rotateValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const Jupiter: React.FC = () => {
     Animated.loop(
       Animated.timing(rotateValue, {
         toValue: 1,
-        duration: 10000, // Duração de 10 segundos para uma rotação completa
+        duration: 10000, 
         easing: Easing.linear,
         useNativeDriver: true,
       })
@@ -34,6 +35,11 @@ const Jupiter: React.FC = () => {
 
   const handleCloseModal = () => {
     setModalVisible(false);
+    setShowFullText(false); 
+  };
+
+  const handleReadMore = () => {
+    setShowFullText(true);
   };
 
   return (
@@ -52,7 +58,6 @@ const Jupiter: React.FC = () => {
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Júpiter</Text>
             <Image source={jupiterImage} style={styles.modalImage} />
-            <ScrollView>
               <Text style={styles.modalText}>
                 <Text style={styles.topicTitle}>Diâmetro: </Text>
                 139.820 km
@@ -61,27 +66,47 @@ const Jupiter: React.FC = () => {
                 <Text style={styles.topicTitle}>Massa: </Text>
                 1.898 × 10²⁷ kg
               </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Período de Rotação: </Text>
-                9,93 horas
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Período de Translação: </Text>
-                11,86 anos terrestres
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Temperatura Média: </Text>
-                -108 °C
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Distância do Sol: </Text>
-                778.5 milhões de km
-              </Text>
-              <Text style={styles.modalText}>
-                <Text style={styles.topicTitle}>Curiosidades: </Text>
-                Júpiter tem a maior lua do sistema solar, Ganimedes, e possui mais de 75 luas conhecidas.
-              </Text>
-            </ScrollView>
+              {!showFullText && (
+                <>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Rotação: </Text>
+                    9,93 horas
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Translação: </Text>
+                    11,86 anos terrestres
+                  </Text>
+                </>
+              )}
+              {showFullText && (
+                <>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Rotação: </Text>
+                    9,93 horas
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Período de Translação: </Text>
+                    11,86 anos terrestres
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Temperatura Média: </Text>
+                    -108 °C
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Distância do Sol: </Text>
+                    778.5 milhões de km
+                  </Text>
+                  <Text style={styles.modalText}>
+                    <Text style={styles.topicTitle}>Curiosidades: </Text>
+                    Júpiter tem a maior lua do sistema solar, Ganimedes, e possui mais de 75 luas conhecidas.
+                  </Text>
+                </>
+              )}
+            {!showFullText && (
+              <TouchableOpacity onPress={handleReadMore} style={styles.readMoreButton}>
+                <Text style={styles.readMoreButtonText}>Ler mais</Text>
+              </TouchableOpacity>
+            )}
             <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
               <Text style={styles.closeButtonText}>Fechar</Text>
             </TouchableOpacity>

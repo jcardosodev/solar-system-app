@@ -54,6 +54,16 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
   },
+  readMoreButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginTop: 2,
+    top: -10
+  },
+  readMoreButtonText: {
+    color: 'white',
+    fontSize: 16,
+  },
 });
 
 export default styles;

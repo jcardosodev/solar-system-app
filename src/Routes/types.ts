@@ -1,16 +1,17 @@
+// Definição das rotas para o Stack Navigator
 export type RootStackParamList = {
   TelaInicial: undefined;
   HomePage: undefined;
   MarsTrip: undefined;
-  TripSummary: undefined;
+  Login: undefined;
+  SolarSystem: undefined;
 };
 
+// Definição das rotas para o Tab Navigator
 export type RootTabParamList = {
   Home: undefined;
   MarsTrip: undefined;
-  TripSummary: undefined;
   Login: undefined;
-  Cadastro: undefined;
   SolarSystem: undefined;
-  ImageOfTheDay: undefined;
+  Cadastrar: undefined;
 };

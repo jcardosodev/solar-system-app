@@ -9,6 +9,8 @@ import { Rocket } from "../../components/Rocket/Rocket"
 import { useUserContext } from "../../context/UserContext";
 import { User } from "../../types/types";
 import { userApi } from "../../services/UserApi/UserApi";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { RootTabParamList } from "../../Routes/types";
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -44,6 +46,7 @@ export const Login = () => {
     setUsuarioLogado(foundUser);
     Alert.alert(`Login efetuado com sucesso. Bem vindo(a) ${foundUser.nome}!`)
   }
+  const navigation = useNavigation<NavigationProp<RootTabParamList>>();
 
   return (
     <ImageBack 
@@ -59,7 +62,11 @@ export const Login = () => {
           onChangeText={setEmail}
         />
         <Text style={styles.label}>Senha</Text>
-        <PasswordInput style={styles.input} value={password} onChangeText={setPassword}/>
+        <PasswordInput 
+          style={styles.input}
+          value={password}
+          onChangeText={setPassword}
+        />
       </View>
       <View style={styles.buttonContainer}> 
         <Button
@@ -70,7 +77,7 @@ export const Login = () => {
         />
         <Button
           title="Cadastrar"
-          onPress={() => alert('Clicou em cadastrar')}
+          onPress={() => navigation.navigate('Cadastrar')}
           style={styles.button}
           textStyle={styles.buttonText}
         />

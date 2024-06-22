@@ -16,8 +16,8 @@ export const styles = StyleSheet.create({
     bottom: 0,
   },
   rocketIcon: {
-    color: 'blue',
-    shadowColor: 'yellow',
+    color: 'yellow',
+    shadowColor: 'green',
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 1,
     shadowRadius: 10,
