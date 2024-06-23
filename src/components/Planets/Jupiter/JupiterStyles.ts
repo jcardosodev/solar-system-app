@@ -62,8 +62,9 @@ const styles = StyleSheet.create({
   },
   readMoreButtonText: {
     color: 'white',
+    fontFamily: 'Roboto',
     fontSize: 16,
   },
-});
+  });
 
 export default styles;
