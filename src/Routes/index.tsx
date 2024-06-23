@@ -78,6 +78,18 @@ const SolarSystemStack = () => (
   </Stack.Navigator>
 );
 
+const CadastrarStack = () => (
+  <Stack.Navigator
+    screenOptions={({ navigation }) => ({
+      headerTransparent: true,
+      headerLeft: () => renderMenuButton(navigation),
+      headerTitle: '', 
+    })}
+  >
+    <Stack.Screen name="Cadastrar" component={Cadastrar} />
+  </Stack.Navigator>
+);
+
 const TabNavigator = () => {
   const { isTabBarVisible } = useTabBarVisibility();
 
@@ -123,7 +135,7 @@ function MyDrawer() {
         },
         headerTransparent: true,
         drawerContentStyle: {
-          backgroundColor: 'rgba(0,0,0,0)',
+          backgroundColor: 'rgba(0,0,0,0.2)',
         },
       }}
     >
@@ -131,7 +143,7 @@ function MyDrawer() {
       <Drawer.Screen name="MarsTrip" component={MarsTripStack} options={{ headerShown: false }} />
       <Drawer.Screen name="Login" component={LoginStack} options={{ headerShown: false }} />
       <Drawer.Screen name="SolarSystem" component={SolarSystemStack} options={{ headerShown: false }} />
-      <Drawer.Screen name="Cadastrar" component={Cadastrar} options={{ headerShown: false }} />
+      <Drawer.Screen name='Cadastrar' component={CadastrarStack} options={{ headerShown: false }} />
       <Drawer.Screen name="ImageOfTheDay" component={ImageOfTheDay} options={{ headerShown: false }} />
       <Drawer.Screen name="PlanetsTest" component={PlanetsTest} options={{ headerShown: false }} />
     </Drawer.Navigator>
