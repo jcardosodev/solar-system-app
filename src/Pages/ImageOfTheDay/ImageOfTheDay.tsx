@@ -12,9 +12,7 @@ const ImageOfTheDay = () => {
   const fetchData = async () => {
     try {
       const data = await getApodTodayImagery();
-      const translatedExplanation = await translateText(data.explanation, "pt");
-      const summarizedExplanation = summarizeText(translatedExplanation);
-      setApodData({ ...data, explanation: summarizedExplanation });
+      setApodData(data);
     } catch (err) {
       setError("Failed to fetch APOD imagery");
     } finally {

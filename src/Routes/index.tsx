@@ -139,8 +139,10 @@ function MyDrawer() {
         },
         headerTransparent: true,
         drawerContentStyle: {
-          backgroundColor: 'rgba(0,0,0,0.2)',
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
         },
+        drawerActiveTintColor: '#ff880f',
+        drawerInactiveTintColor: 'white'
       }}
     >
       <Drawer.Screen name="Home" component={TabNavigator} options={{ headerShown: false }} />
@@ -149,7 +151,6 @@ function MyDrawer() {
       <Drawer.Screen name="SolarSystem" component={SolarSystemStack} options={{ headerShown: false }} />
       <Drawer.Screen name='Cadastrar' component={CadastrarStack} options={{ headerShown: false }} />
       <Drawer.Screen name="ImageOfTheDay" component={ImageOfTheDay} options={{ headerShown: false }} />
-      <Drawer.Screen name="PlanetsTest" component={PlanetsTest} options={{ headerShown: false }} />
     </Drawer.Navigator>
   );
 }
