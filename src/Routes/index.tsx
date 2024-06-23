@@ -1,3 +1,4 @@
+
 import React from 'react';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
@@ -146,11 +147,11 @@ function MyDrawer() {
       }}
     >
       <Drawer.Screen name="Home" component={TabNavigator} options={{ headerShown: false }} />
-      <Drawer.Screen name="MarsTrip" component={MarsTripStack} options={{ headerShown: false }} />
+      <Drawer.Screen name="Sua Viagem à Marte" component={MarsTripStack} options={{ headerShown: false }} />
       <Drawer.Screen name="Login" component={LoginStack} options={{ headerShown: false }} />
-      <Drawer.Screen name="SolarSystem" component={SolarSystemStack} options={{ headerShown: false }} />
+      <Drawer.Screen name="Sistema Solar" component={SolarSystemStack} options={{ headerShown: false }} />
       <Drawer.Screen name='Cadastrar' component={CadastrarStack} options={{ headerShown: false }} />
-      <Drawer.Screen name="ImageOfTheDay" component={ImageOfTheDay} options={{ headerShown: false }} />
+      <Drawer.Screen name="Imagem do dia" component={ImageOfTheDay} options={{ headerShown: false }} />
     </Drawer.Navigator>
   );
 }
