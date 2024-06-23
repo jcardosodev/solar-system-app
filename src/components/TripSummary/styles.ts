@@ -28,4 +28,18 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: 'center',
   },
+  buttonContainer: {
+    flexDirection: 'row',
+    margin: 28
+  },
+  button: {
+    margin: 16,
+    backgroundColor: '#ff880f20',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 4,
+  },
+  buttonText: {
+    color: '#ff880f',
+  }
 });
