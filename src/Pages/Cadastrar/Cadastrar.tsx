@@ -6,13 +6,7 @@ import { Button } from "../../components/Button/Button";
 import { PasswordInput } from "../../components/PasswordInput/PasswordInput";
 import { EmailInput } from "../../components/EmailInput/EmailInput";
 import { userApi } from "../../services/UserApi/UserApi";
-
-interface User {
-  id: string;
-  nome: string;
-  email: string;
-  senha: string;
-}
+import { User } from "../../types/types";
 
 export const Cadastrar = () => {
   const [userName, setUserName] = useState('');
