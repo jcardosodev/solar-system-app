@@ -23,7 +23,6 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({ style, value, onCh
         value={value}
         onChangeText={onChangeText}
       />
-
       <TouchableOpacity
         style={styles.iconContainer}
         onPress={() => setShowPassword(!showPassword)}
@@ -36,5 +35,4 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({ style, value, onCh
       </TouchableOpacity>
     </View>        
   );
-
 }

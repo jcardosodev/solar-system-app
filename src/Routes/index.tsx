@@ -11,11 +11,13 @@ import { Login } from '../Pages/Login/Login';
 import SolarSystemScreen from '../Pages/SolarSystem';
 import TelaInicial from '../Pages/TelaInicial';
 import ImageOfTheDay from '../Pages/ImageOfTheDay/ImageOfTheDay';
-import {Cadastrar} from '../Pages/Cadastro/Cadastro';
+import {Cadastrar} from '../Pages/Cadastrar/Cadastrar';
 import PlanetsTest from '../Pages/PlanetsTest/PlanetsTest';
 import { RootStackParamList, RootTabParamList } from './types';
 import { TabBarVisibilityProvider, useTabBarVisibility } from '../context/TabBarVisibilityContext';
 import MenuBar from '../components/MenuBar/MenuBar';
+import TripSummary from '../components/TripSummary/TripSummary';
+import { UserProvider } from '../context/UserContext';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator<RootStackParamList>();
@@ -26,18 +28,21 @@ const renderMenuButton = (navigation: any) => (
   <MenuBar onPress={() => navigation.openDrawer()} />
 );
 
-// Definindo o Stack Navigator para a tela Home com um botão para abrir o Drawer
+
 const HomeStack = () => (
   <Stack.Navigator
     initialRouteName="TelaInicial"
     screenOptions={({ navigation }) => ({
       headerTransparent: true,
       headerLeft: () => renderMenuButton(navigation),
-      headerTitle: '', // Removendo o título da tela
+      headerTitle: '', 
     })}
   >
     <Stack.Screen name="TelaInicial" component={TelaInicial} options={{ headerShown: false }} />
     <Stack.Screen name="HomePage" component={HomePage} />
+    <Stack.Screen name="TripSummary" component={TripSummary} />
+    <Stack.Screen name="ImageOfTheDay" component={ImageOfTheDay} />
+    <Stack.Screen name="SolarSystem" component={SolarSystemScreen} />
   </Stack.Navigator>
 );
 
@@ -46,7 +51,7 @@ const MarsTripStack = () => (
     screenOptions={({ navigation }) => ({
       headerTransparent: true,
       headerLeft: () => renderMenuButton(navigation),
-      headerTitle: '', // Removendo o título da tela
+      headerTitle: '', 
     })}
   >
     <Stack.Screen name="MarsTrip" component={MarsTrip} />
@@ -58,7 +63,7 @@ const LoginStack = () => (
     screenOptions={({ navigation }) => ({
       headerTransparent: true,
       headerLeft: () => renderMenuButton(navigation),
-      headerTitle: '', // Removendo o título da tela
+      headerTitle: '', 
     })}
   >
     <Stack.Screen name="Login" component={Login} />
@@ -70,10 +75,22 @@ const SolarSystemStack = () => (
     screenOptions={({ navigation }) => ({
       headerTransparent: true,
       headerLeft: () => renderMenuButton(navigation),
-      headerTitle: '', // Removendo o título da tela
+      headerTitle: '', 
     })}
   >
     <Stack.Screen name="SolarSystem" component={SolarSystemScreen} />
+  </Stack.Navigator>
+);
+
+const CadastrarStack = () => (
+  <Stack.Navigator
+    screenOptions={({ navigation }) => ({
+      headerTransparent: true,
+      headerLeft: () => renderMenuButton(navigation),
+      headerTitle: '', 
+    })}
+  >
+    <Stack.Screen name="Cadastrar" component={Cadastrar} />
   </Stack.Navigator>
 );
 
@@ -111,7 +128,7 @@ const TabNavigator = () => {
   );
 };
 
-// Definindo o Drawer Navigator
+
 function MyDrawer() {
   return (
     <Drawer.Navigator
@@ -122,7 +139,7 @@ function MyDrawer() {
         },
         headerTransparent: true,
         drawerContentStyle: {
-          backgroundColor: 'rgba(0,0,0,0.5)',
+          backgroundColor: 'rgba(0,0,0,0.2)',
         },
       }}
     >
@@ -130,7 +147,7 @@ function MyDrawer() {
       <Drawer.Screen name="MarsTrip" component={MarsTripStack} options={{ headerShown: false }} />
       <Drawer.Screen name="Login" component={LoginStack} options={{ headerShown: false }} />
       <Drawer.Screen name="SolarSystem" component={SolarSystemStack} options={{ headerShown: false }} />
-      <Drawer.Screen name="Cadastro" component={Cadastrar} options={{ headerShown: false }} />
+      <Drawer.Screen name='Cadastrar' component={CadastrarStack} options={{ headerShown: false }} />
       <Drawer.Screen name="ImageOfTheDay" component={ImageOfTheDay} options={{ headerShown: false }} />
       <Drawer.Screen name="PlanetsTest" component={PlanetsTest} options={{ headerShown: false }} />
     </Drawer.Navigator>

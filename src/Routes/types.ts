@@ -5,6 +5,9 @@ export type RootStackParamList = {
   MarsTrip: undefined;
   Login: undefined;
   SolarSystem: undefined;
+  TripSummary: undefined;
+  ImageOfTheDay: undefined;
+  Cadastrar: undefined;
 };
 
 // Definição das rotas para o Tab Navigator
@@ -13,4 +16,5 @@ export type RootTabParamList = {
   MarsTrip: undefined;
   Login: undefined;
   SolarSystem: undefined;
+  Cadastrar: undefined;
 };

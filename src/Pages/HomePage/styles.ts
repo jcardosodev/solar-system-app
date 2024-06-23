@@ -12,8 +12,7 @@ export const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Marker Felt',
     marginBottom: 10,
-    left: 120
-
+    marginLeft: 120
   },
   line: {
     height: 1.3,
