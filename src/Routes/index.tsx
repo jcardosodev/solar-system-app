@@ -16,6 +16,7 @@ import PlanetsTest from '../Pages/PlanetsTest/PlanetsTest';
 import { RootStackParamList, RootTabParamList } from './types';
 import { TabBarVisibilityProvider, useTabBarVisibility } from '../context/TabBarVisibilityContext';
 import MenuBar from '../components/MenuBar/MenuBar';
+import TripSummary from '../components/TripSummary/TripSummary';
 import { UserProvider } from '../context/UserContext';
 
 const Drawer = createDrawerNavigator();
@@ -39,6 +40,9 @@ const HomeStack = () => (
   >
     <Stack.Screen name="TelaInicial" component={TelaInicial} options={{ headerShown: false }} />
     <Stack.Screen name="HomePage" component={HomePage} />
+    <Stack.Screen name="TripSummary" component={TripSummary} />
+    <Stack.Screen name="ImageOfTheDay" component={ImageOfTheDay} />
+    <Stack.Screen name="SolarSystem" component={SolarSystemScreen} />
   </Stack.Navigator>
 );
 

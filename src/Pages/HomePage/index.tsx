@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, Modal, ScrollView, ActivityIndicator } from 'react-native';
 import { styles } from './styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { RootStackParamList } from '../../Routes/types';
 
 const HomePage = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const [modalVisible, setModalVisible] = useState(false);
   const [innerModalVisible, setInnerModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -33,7 +36,7 @@ const HomePage = () => {
         <Text style={styles.title}>Space is Now</Text>
         <View style={styles.line} />
         <View style={styles.cardPrincipal}>
-          <TouchableOpacity style={styles.cardPrincipal}>
+          <TouchableOpacity style={styles.cardPrincipal} onPress={() => navigation.navigate('MarsTrip')}>
             <Image source={require('../../assets/images/homePageMars.jpeg')} style={styles.cardImage} />
             <Text style={styles.cardText}>- Passagem para Marte</Text>
           </TouchableOpacity>
@@ -43,25 +46,25 @@ const HomePage = () => {
             <Image source={require('../../assets/images/MoonHomePage.jpg')} style={styles.cardImage} />
             <Text style={styles.cardText}>Lua 🌙</Text>
           </TouchableOpacity>
-          <View style={styles.card}>
+          <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('ImageOfTheDay')}>
             <Image source={require('../../assets/images/backgroundHome.png')} style={styles.cardImage} />
             <Text style={styles.cardText}>Imagem do dia</Text>
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={styles.sectionContainer}>
           <Text style={styles.sectionTitle}>Visite nosso Sistema Solar</Text>
           <View style={styles.sectionLine} />
         </View>
-        <View style={styles.newsCard}>
+        <TouchableOpacity style={styles.newsCard} onPress={() => navigation.navigate('SolarSystem')}>
           <Image source={require('../../assets/images/vortex.jpg')} style={styles.newsImage} />
           <View style={styles.newsTextContainer}>
             <Text style={styles.newsTitle}>A galáxia te espera</Text>
             <Text style={styles.newsDate}>Jun 21, 2024</Text>
             <Ionicons name="arrow-forward" size={20} color="white" style={styles.arrowIcon} />
           </View>
-        </View>
+        </TouchableOpacity>
       </ScrollView>
-      
+
       <Modal visible={modalVisible} transparent={true} animationType="slide">
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
