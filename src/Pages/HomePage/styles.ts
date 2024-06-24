@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     color: '#fff',
     fontFamily: 'Roboto-Bold',
     marginBottom: 10,
-    textAlign: 'center',
+    marginLeft: 120
   },
   line: {
     height: 1.3,
@@ -121,7 +121,7 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     fontFamily: 'Roboto-Bold',
     marginVertical: 10,
-    textAlign: 'center',
+    left: 120
   },
   modalText: {
     color: '#fff',
@@ -150,10 +150,11 @@ export const styles = StyleSheet.create({
     width: '100%',
   },
   readMoreButton: {
-    marginTop: 10,
-    padding: 10,
-    backgroundColor: 'blue',
-    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginTop: 2,
+    top: -10,
+    alignItems: 'center'
   },
   readMoreButtonText: {
     color: 'white',

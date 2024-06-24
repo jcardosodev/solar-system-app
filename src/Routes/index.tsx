@@ -12,10 +12,11 @@ import SolarSystemScreen from '../Pages/SolarSystem';
 import TelaInicial from '../Pages/TelaInicial';
 import ImageOfTheDay from '../Pages/ImageOfTheDay/ImageOfTheDay';
 import {Cadastrar} from '../Pages/Cadastrar/Cadastrar';
-import PlanetsTest from '../Pages/PlanetsTest/PlanetsTest';
 import { RootStackParamList, RootTabParamList } from './types';
 import { TabBarVisibilityProvider, useTabBarVisibility } from '../context/TabBarVisibilityContext';
 import MenuBar from '../components/MenuBar/MenuBar';
+import TripSummary from '../components/TripSummary/TripSummary';
+import { UserProvider } from '../context/UserContext';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator<RootStackParamList>();
@@ -38,6 +39,9 @@ const HomeStack = () => (
   >
     <Stack.Screen name="TelaInicial" component={TelaInicial} options={{ headerShown: false }} />
     <Stack.Screen name="HomePage" component={HomePage} />
+    <Stack.Screen name="TripSummary" component={TripSummary} />
+    <Stack.Screen name="ImageOfTheDay" component={ImageOfTheDay} />
+    <Stack.Screen name="SolarSystem" component={SolarSystemScreen} />
   </Stack.Navigator>
 );
 
@@ -134,27 +138,30 @@ function MyDrawer() {
         },
         headerTransparent: true,
         drawerContentStyle: {
-          backgroundColor: 'rgba(0,0,0,0.2)',
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
         },
+        drawerActiveTintColor: '#ff880f',
+        drawerInactiveTintColor: 'white'
       }}
     >
       <Drawer.Screen name="Home" component={TabNavigator} options={{ headerShown: false }} />
-      <Drawer.Screen name="MarsTrip" component={MarsTripStack} options={{ headerShown: false }} />
+      <Drawer.Screen name="Sua Viagem à Marte" component={MarsTripStack} options={{ headerShown: false }} />
       <Drawer.Screen name="Login" component={LoginStack} options={{ headerShown: false }} />
-      <Drawer.Screen name="SolarSystem" component={SolarSystemStack} options={{ headerShown: false }} />
+      <Drawer.Screen name="Sistema Solar" component={SolarSystemStack} options={{ headerShown: false }} />
       <Drawer.Screen name='Cadastrar' component={CadastrarStack} options={{ headerShown: false }} />
-      <Drawer.Screen name="ImageOfTheDay" component={ImageOfTheDay} options={{ headerShown: false }} />
-      <Drawer.Screen name="PlanetsTest" component={PlanetsTest} options={{ headerShown: false }} />
+      <Drawer.Screen name="Imagem do dia" component={ImageOfTheDay} options={{ headerShown: false }} />
     </Drawer.Navigator>
   );
 }
 
 const App = () => (
-  <TabBarVisibilityProvider>
-    <NavigationContainer>
-      <MyDrawer />
-    </NavigationContainer>
-  </TabBarVisibilityProvider>
+  <UserProvider>
+    <TabBarVisibilityProvider>
+      <NavigationContainer>
+        <MyDrawer />
+      </NavigationContainer>
+    </TabBarVisibilityProvider>
+  </UserProvider>
 );
 
 export default App;
