@@ -1,27 +1,73 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ImageBackground } from 'react-native';
+import { View, Text, ImageBackground, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styles } from './styles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useUserContext } from '../../context/UserContext';
+import { userApi } from '../../services/UserApi/UserApi';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { RootTabParamList } from '../../Routes/types';
+import { TripData } from '../../types/types';
 
 const backgroundImage = require('../../assets/images/MarsBackground.png');
 
 const TripSummary = () => {
-  const [tripData, setTripData] = useState<any>(null);
+  const [tripData, setTripData] = useState<TripData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const { usuarioLogado } = useUserContext();
+  const navigation = useNavigation<NavigationProp<RootTabParamList>>();
 
   const loadTripData = async () => {
-    const data = await AsyncStorage.getItem('@mars_trip');
-    if (data) {
-      setTripData(JSON.parse(data));
+    try {
+      const data = await AsyncStorage.getItem('@mars_trip');
+      if (data) {
+        setTripData(JSON.parse(data));
+      }
+      const response = await userApi.get(`users/${usuarioLogado?.id}`);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Falha ao carregar dados de viagem:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const handleConfirmarClicked = () => {
+  const handleConfirmarClicked = async () => {
+    if (!tripData) {
+      Alert.alert("Erro", "Dados da viagem não encontrados.");
+      return;
+    }
+    try {
+      const response = await userApi.put(`users/${usuarioLogado?.id}`, {
+        ...usuarioLogado,
+        viagens: [
+          {
+            nome: tripData.name,
+            idade: tripData.age,
+            companhia: tripData.companion,
+            duracao: tripData.duration,
+            preco: tripData.price
+          }
+        ]
+      });
 
+      if (response.status === 200) {
+        Alert.alert("Faça suas malas!", "Informações de viagem registradas.")
+      } 
+    } catch (error) {
+      console.log("Falha ao registrar informações de viagem:", error);
+      Alert.alert("Erro", 'Falha ao tentar registrar informações de viagem.')
+    }
   };
 
-  const handleCancelarClicked = () => {
-    
+  const handleCancelarClicked = async () => {
+    try {
+      await AsyncStorage.removeItem('@mars_trip');
+      setTripData(null);
+      navigation.navigate('MarsTrip');
+    } catch (error) {
+      console.error("Falha ao remover informações de viagem:", error)
+    }
   };
 
   useEffect(() => {

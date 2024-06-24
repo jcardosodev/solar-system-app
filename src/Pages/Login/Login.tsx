@@ -17,7 +17,8 @@ export const Login = () => {
   const [password, setPassword] = useState('');
   const [users, setUsers] = useState<User[]>([]);
   const { setUsuarioLogado } = useUserContext();
-
+  const navigation = useNavigation<NavigationProp<RootTabParamList>>();
+  
   const getAllUsers = async () => {
     try {
       const response = await userApi.get('users');
@@ -45,7 +46,6 @@ export const Login = () => {
     setUsuarioLogado(foundUser);
     Alert.alert("Sucesso", `Login efetuado com sucesso. Bem vindo(a) ${foundUser.nome}!`)
   }
-  const navigation = useNavigation<NavigationProp<RootTabParamList>>();
 
   return (
     <ImageBack 

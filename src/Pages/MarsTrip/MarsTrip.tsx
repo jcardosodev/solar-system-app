@@ -7,6 +7,7 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../Routes/types';
 import { styles } from '../MarsTrip/styles';
 import TripSummary from '../../components/TripSummary/TripSummary';
+import { useUserContext } from '../../context/UserContext';
 
 const backgroundImage = require('../../assets/images/MarsBackground.png');
 const serjaoImg = require('../../assets/images/serjaoImg.png');
@@ -21,6 +22,7 @@ const MarsTrip = () => {
   const [date, setDate] = useState(new Date());
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { usuarioLogado } = useUserContext();
 
   const formatDate = (date: Date) => {
     const day = String(date.getDate()).padStart(2, '0');
@@ -42,6 +44,10 @@ const MarsTrip = () => {
   }
 
   const handleSave = async () => {
+    if (!usuarioLogado) {
+      Alert.alert("Alerta", 'Necessário login para acessar esta página. Você será redirecionado(a) automaticamente');
+      navigation.navigate('Login');
+    }
     if (
       name.length < 1 ||
       age.length < 1 ||
@@ -60,6 +66,10 @@ const MarsTrip = () => {
         ...tripDetails,
       };
       await AsyncStorage.setItem('@mars_trip', JSON.stringify(userData));
+      setAge('');
+      setName('');
+      setDate(new Date());
+      setCompanion('');
       setLoading(false);
       navigation.navigate('TripSummary');
     } catch (error) {
