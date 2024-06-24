@@ -36,18 +36,18 @@ export const Cadastrar = () => {
       password.length < 1 ||
       confirmPassword.length < 1
     ) {
-      Alert.alert("Error", "Um ou mais campos não foram preenchidos.")
+      Alert.alert("Erro", "Um ou mais campos não foram preenchidos.")
       return;
     }
 
     if (password !== confirmPassword) {
-      Alert.alert("Error", "Senhas são incompatíveis.");
+      Alert.alert("Erro", "Senhas são incompatíveis.");
       return;
     }
 
     const userExists = users.some(user => user.email === email);
     if (userExists) {
-      Alert.alert("Error", "Usuário já cadastrado. Faça login ou cadastre-se com outro e-mail.");
+      Alert.alert("Erro", "Usuário já cadastrado. Faça login ou cadastre-se com outro e-mail.");
       return;
     }
 
@@ -57,7 +57,7 @@ export const Cadastrar = () => {
         email: email,
         senha: password
       });
-      Alert.alert("Success", "Usuário cadastrado com sucesso.");
+      Alert.alert("Sucesso", "Usuário cadastrado com sucesso.");
       setUserName('');
       setEmail('');
       setPassword('');
@@ -65,7 +65,7 @@ export const Cadastrar = () => {
       getAllUsers();
     } catch (error) {
       console.log("Failed to add user:", error);
-      Alert.alert("Error", "Falha ao cadastrar usuário.");
+      Alert.alert("Erro", "Falha ao cadastrar usuário.");
     }
   };
 

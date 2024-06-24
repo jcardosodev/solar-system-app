@@ -47,7 +47,7 @@ const MarsTrip = () => {
       age.length < 1 ||
       companion.length < 1
     ) {
-      Alert.alert("Error", "Um ou mais campos não foram preenchidos.")
+      Alert.alert("Erro", "Um ou mais campos não foram preenchidos.")
       return;
     }
 

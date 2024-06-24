@@ -38,12 +38,12 @@ export const Login = () => {
     )
 
     if (!foundUser) {
-      Alert.alert("Error", "E-mail ou senha incorretos.");
+      Alert.alert("Erro", "E-mail ou senha incorretos.");
       return;
     }
 
     setUsuarioLogado(foundUser);
-    Alert.alert(`Login efetuado com sucesso. Bem vindo(a) ${foundUser.nome}!`)
+    Alert.alert("Sucesso", `Login efetuado com sucesso. Bem vindo(a) ${foundUser.nome}!`)
   }
   const navigation = useNavigation<NavigationProp<RootTabParamList>>();
 
