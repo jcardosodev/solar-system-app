@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, ImageBackground, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
+import { View, Text, TextInput, ImageBackground, TouchableOpacity, Image, ActivityIndicator, Alert } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -36,7 +36,21 @@ const MarsTrip = () => {
     departureDate: formatDate(date),
   };
 
+  const handleAgeChange = (text: string) => {
+    const numericText = text.replace(/[^0-9]/g, '');
+    setAge(numericText);
+  }
+
   const handleSave = async () => {
+    if (
+      name.length < 1 ||
+      age.length < 1 ||
+      companion.length < 1
+    ) {
+      Alert.alert("Error", "Um ou mais campos não foram preenchidos.")
+      return;
+    }
+
     try {
       setLoading(true);
       const userData = {
@@ -86,7 +100,7 @@ const MarsTrip = () => {
           placeholder="Idade"
           placeholderTextColor="#ccc"
           value={age}
-          onChangeText={setAge}
+          onChangeText={handleAgeChange}
           keyboardType="numeric"
           returnKeyType='done'
         />
