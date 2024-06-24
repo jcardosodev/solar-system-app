@@ -5,12 +5,12 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#000',
     paddingTop: 50,
-    paddingHorizontal: 15,
+    paddingHorizontal: 20,
   },
   title: {
     fontSize: 24,
-    color: 'white',
-    fontFamily: 'Marker Felt',
+    color: '#fff',
+    fontFamily: 'Roboto-Bold',
     marginBottom: 10,
     marginLeft: 120
   },
@@ -25,17 +25,17 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
   },
   cardPrincipal: {
-    backgroundColor: 'black',
+    backgroundColor: '#1c1c1c',
     borderRadius: 10,
-    padding: 1,
+    padding: 5,
     margin: 5,
-    alignItems: 'baseline',
+    alignItems: 'center',
     width: '100%',
   },
   card: {
-    backgroundColor: 'black',
+    backgroundColor: '#1c1c1c',
     borderRadius: 10,
-    padding: 3,
+    padding: 5,
     margin: 5,
     alignItems: 'center',
     width: '48%',
@@ -47,31 +47,29 @@ export const styles = StyleSheet.create({
   },
   cardText: {
     color: '#D3D3D3',
-    fontFamily: 'Stencil Std',
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
-    fontWeight: '900',
     marginTop: 10,
     textAlign: 'center',
   },
+  sectionContainer: {
+    marginBottom: 20,
+  },
   sectionTitle: {
     fontSize: 18,
-    color: 'white',
-    fontFamily: 'Marker Felt',
-    fontWeight: '700',
+    color: '#fff',
+    fontFamily: 'Roboto-Bold',
     marginBottom: 10,
-    marginTop: 20,
+    textAlign: 'center',
   },
   sectionLine: {
     height: 0.5,
     backgroundColor: 'white',
     marginBottom: 15,
   },
-  sectionContainer: {
-    marginBottom: 1,
-  },
   newsCard: {
     flexDirection: 'row',
-    backgroundColor: '#1c1c1c',
+    backgroundColor: '#333',
     borderRadius: 10,
     marginBottom: 20,
     overflow: 'hidden',
@@ -86,15 +84,19 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   newsTitle: {
-    color: 'white',
-    fontFamily: 'Roboto',
+    color: '#fff',
+    fontFamily: 'Roboto-Bold',
     fontSize: 16,
     marginBottom: 5,
   },
   newsDate: {
     color: 'gray',
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Regular',
     fontSize: 12,
+  },
+  arrowIcon: {
+    alignSelf: 'flex-end',
+    marginTop: -20,
   },
   modalContainer: {
     flex: 1,
@@ -115,15 +117,15 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
   },
   modalTitle: {
-    color: 'white',
+    color: '#fff',
     fontSize: 24,
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Bold',
     marginVertical: 10,
     left: 120
   },
   modalText: {
-    color: 'white',
-    fontFamily: 'Roboto',
+    color: '#fff',
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
     textAlign: 'center',
     marginBottom: 10,
@@ -133,15 +135,12 @@ export const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: 'tomato',
     borderRadius: 10,
+    alignSelf: 'center',
   },
   closeButtonText: {
     color: 'white',
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Bold',
     fontSize: 16,
-  },
-  arrowIcon: {
-    alignSelf: 'flex-end',
-    marginTop: -20,
   },
   modalTextContainer: {
     padding: 10,
@@ -159,7 +158,7 @@ export const styles = StyleSheet.create({
   },
   readMoreButtonText: {
     color: 'white',
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Bold',
     fontSize: 16,
   },
   innerModalContent: {
