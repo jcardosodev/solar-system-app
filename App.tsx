@@ -15,11 +15,9 @@ export default function App() {
   }
 
   return (
-    <UserProvider>
       <View style={styles.container}>
         <Routes />
       </View>
-    </UserProvider>
   );
 };
 

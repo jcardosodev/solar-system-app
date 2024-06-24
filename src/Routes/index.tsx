@@ -1,4 +1,3 @@
-
 import React from 'react';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
@@ -13,7 +12,6 @@ import SolarSystemScreen from '../Pages/SolarSystem';
 import TelaInicial from '../Pages/TelaInicial';
 import ImageOfTheDay from '../Pages/ImageOfTheDay/ImageOfTheDay';
 import {Cadastrar} from '../Pages/Cadastrar/Cadastrar';
-import PlanetsTest from '../Pages/PlanetsTest/PlanetsTest';
 import { RootStackParamList, RootTabParamList } from './types';
 import { TabBarVisibilityProvider, useTabBarVisibility } from '../context/TabBarVisibilityContext';
 import MenuBar from '../components/MenuBar/MenuBar';
@@ -157,11 +155,13 @@ function MyDrawer() {
 }
 
 const App = () => (
-  <TabBarVisibilityProvider>
-    <NavigationContainer>
-      <MyDrawer />
-    </NavigationContainer>
-  </TabBarVisibilityProvider>
+  <UserProvider>
+    <TabBarVisibilityProvider>
+      <NavigationContainer>
+        <MyDrawer />
+      </NavigationContainer>
+    </TabBarVisibilityProvider>
+  </UserProvider>
 );
 
 export default App;
