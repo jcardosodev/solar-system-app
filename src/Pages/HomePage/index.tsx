@@ -4,6 +4,12 @@ import { styles } from './styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../Routes/types';
+import withLoading from '../../hoc/withLoading';
+
+const homePageMarsImage = require('../../assets/images/homePageMars.jpeg');
+const moonHomePageImage = require('../../assets/images/MoonHomePage.jpg');
+const backgroundImage = require('../../assets/images/backgroundHome.png');
+const vortexImage = require('../../assets/images/vortex.jpg');
 
 const HomePage = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
@@ -33,17 +39,17 @@ const HomePage = () => {
         <View style={styles.line} />
         <View style={styles.cardPrincipal}>
           <TouchableOpacity style={styles.cardPrincipal} onPress={() => navigation.navigate('MarsTrip')}>
-            <Image source={require('../../assets/images/homePageMars.jpeg')} style={styles.cardImage} />
+            <Image source={homePageMarsImage} style={styles.cardImage} />
             <Text style={styles.cardText}>- Passagem para Marte</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.cardContainer}>
           <TouchableOpacity style={styles.card} onPress={openModal}>
-            <Image source={require('../../assets/images/MoonHomePage.jpg')} style={styles.cardImage} />
+            <Image source={moonHomePageImage} style={styles.cardImage} />
             <Text style={styles.cardText}>Lua 🌙</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('ImageOfTheDay')}>
-            <Image source={require('../../assets/images/backgroundHome.png')} style={styles.cardImage} />
+            <Image source={backgroundImage} style={styles.cardImage} />
             <Text style={styles.cardText}>Imagem do dia</Text>
           </TouchableOpacity>
         </View>
@@ -52,7 +58,7 @@ const HomePage = () => {
           <View style={styles.sectionLine} />
         </View>
         <TouchableOpacity style={styles.newsCard} onPress={() => navigation.navigate('SolarSystem')}>
-          <Image source={require('../../assets/images/vortex.jpg')} style={styles.newsImage} />
+          <Image source={vortexImage} style={styles.newsImage} />
           <View style={styles.newsTextContainer}>
             <Text style={styles.newsTitle}>A galáxia te espera</Text>
             <Text style={styles.newsDate}>Jun 21, 2024</Text>
@@ -68,7 +74,7 @@ const HomePage = () => {
               <ActivityIndicator size="large" color="#fff" />
             ) : (
               <>
-                <Image source={require('../../assets/images/MoonHomePage.jpg')} style={styles.modalImage} />
+                <Image source={moonHomePageImage} style={styles.modalImage} />
                 <View style={styles.modalTextContainer}>
                   <Text style={styles.modalTitle}>A Lua</Text>
                   <Text style={styles.modalText}>{expanded ? (
@@ -97,4 +103,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default withLoading(HomePage, [homePageMarsImage, moonHomePageImage, backgroundImage, vortexImage]);

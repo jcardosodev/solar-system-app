@@ -8,6 +8,7 @@ import { RootStackParamList } from '../../Routes/types';
 import { styles } from '../MarsTrip/styles';
 import TripSummary from '../../components/TripSummary/TripSummary';
 import { useUserContext } from '../../context/UserContext';
+import withLoading from '../../hoc/withLoading';
 
 const backgroundImage = require('../../assets/images/MarsBackground.png');
 const serjaoImg = require('../../assets/images/serjaoImg.png');
@@ -158,4 +159,11 @@ const MarsTrip = () => {
   );
 };
 
-export default MarsTrip;
+const images = [
+  backgroundImage,
+  serjaoImg,
+  elonImg,
+  cachorroImg,
+];
+
+export default withLoading(MarsTrip, images);
