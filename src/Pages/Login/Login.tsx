@@ -39,12 +39,12 @@ export const Login = () => {
     )
 
     if (!foundUser) {
-      Alert.alert("Erro", "E-mail ou senha incorretos.");
+      Alert.alert("Error", "E-mail ou senha incorretos.");
       return;
     }
 
     setUsuarioLogado(foundUser);
-    Alert.alert("Sucesso", `Login efetuado com sucesso. Bem vindo(a) ${foundUser.nome}!`)
+    Alert.alert(`Login efetuado com sucesso. Bem vindo(a) ${foundUser.nome}!`)
   }
 
   return (
