@@ -55,7 +55,8 @@ export const Cadastrar = () => {
       await userApi.post('users', {
         nome: userName,
         email: email,
-        senha: password
+        senha: password,
+        viagens: []
       });
       Alert.alert("Success", "Usuário cadastrado com sucesso.");
       setUserName('');
