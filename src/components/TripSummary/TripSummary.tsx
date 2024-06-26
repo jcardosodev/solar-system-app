@@ -37,22 +37,16 @@ const TripSummary = () => {
       return;
     }
     try {
-      const response = await userApi.put(`users/${usuarioLogado?.id}`, {
-        ...usuarioLogado,
-        viagens: [
-          {
-            nome: tripData.name,
-            idade: tripData.age,
-            companhia: tripData.companion,
-            duracao: tripData.duration,
-            preco: tripData.price
-          }
-        ]
+      const response = await userApi.post(`viagens`, {
+        idUser: usuarioLogado?.id,
+        nome: tripData.name,
+        idade: tripData.age,
+        companhia: tripData.companion,
+        duracao: tripData.duration,
+        preco: tripData.price
       });
-
-      if (response.status === 200) {
-        Alert.alert("Faça suas malas!", "Informações de viagem registradas.");
-      }
+      
+      Alert.alert("Faça suas malas!", "Informações de viagem registradas.");
       navigation.navigate('MarsTrip');
     } catch (error) {
       console.log("Falha ao registrar informações de viagem:", error);
