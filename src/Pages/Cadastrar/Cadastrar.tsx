@@ -39,7 +39,7 @@ export const Cadastrar = () => {
       password.length < 1
       // confirmPassword.length < 1
     ) {
-      Alert.alert("Erro", "Um ou mais campos não foram preenchidos.")
+      Alert.alert("Error", "Um ou mais campos não foram preenchidos.")
       return;
     }
 
@@ -50,7 +50,7 @@ export const Cadastrar = () => {
 
     const userExists = users.some(user => user.email === email);
     if (userExists) {
-      Alert.alert("Erro", "Usuário já cadastrado. Faça login ou cadastre-se com outro e-mail.");
+      Alert.alert("Error", "Usuário já cadastrado. Faça login ou cadastre-se com outro e-mail.");
       return;
     }
 
@@ -61,8 +61,7 @@ export const Cadastrar = () => {
         senha: password,
         viagens: []
       });
-
-      Alert.alert("Sucesso", "Usuário cadastrado com sucesso.");
+      Alert.alert("Success", "Usuário cadastrado com sucesso.");
       setUserName('');
       setEmail('');
       setPassword('');
@@ -71,7 +70,7 @@ export const Cadastrar = () => {
       navigation.navigate('Login');
     } catch (error) {
       console.log("Failed to add user:", error);
-      Alert.alert("Erro", "Falha ao cadastrar usuário.");
+      Alert.alert("Error", "Falha ao cadastrar usuário.");
     }
   };
 

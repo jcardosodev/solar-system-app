@@ -8,6 +8,7 @@ import { RootStackParamList } from '../../Routes/types';
 import { styles } from '../MarsTrip/styles';
 import TripSummary from '../../components/TripSummary/TripSummary';
 import { useUserContext } from '../../context/UserContext';
+import withLoading from '../../hoc/withLoading';
 
 const backgroundImage = require('../../assets/images/MarsBackground.png');
 const serjaoImg = require('../../assets/images/serjaoImg.png');
@@ -45,15 +46,16 @@ const MarsTrip = () => {
 
   const handleSave = async () => {
     if (!usuarioLogado) {
-      Alert.alert("Alerta", 'Necessário login para acessar esta página. Você será redirecionado(a) automaticamente');
+      Alert.alert("Alerta", 'Necessário login para acessar esta página.');
       navigation.navigate('Login');
+      return;
     }
     if (
       name.length < 1 ||
       age.length < 1 ||
       companion.length < 1
     ) {
-      Alert.alert("Erro", "Um ou mais campos não foram preenchidos.")
+      Alert.alert("Error", "Um ou mais campos não foram preenchidos.")
       return;
     }
 
@@ -158,4 +160,11 @@ const MarsTrip = () => {
   );
 };
 
-export default MarsTrip;
+const images = [
+  backgroundImage,
+  serjaoImg,
+  elonImg,
+  cachorroImg,
+];
+
+export default withLoading(MarsTrip, images);

@@ -3,7 +3,6 @@ import { ActivityIndicator, Image, Text, TouchableOpacity, View } from "react-na
 import styles from "./ImageOfTheDayStyles";
 import { ApodImageryProps, getApodTodayImagery } from "../../services/apodApi/apodApi";
 
-
 const ImageOfTheDay = () => {
   const [apodData, setApodData] = useState<ApodImageryProps | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -30,7 +29,11 @@ const ImageOfTheDay = () => {
   };
 
   if (loading) {
-    return <ActivityIndicator size="large" color="#0000ff" />;
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
   }
 
   if (error) {
