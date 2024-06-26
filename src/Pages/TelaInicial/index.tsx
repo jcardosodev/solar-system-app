@@ -1,3 +1,4 @@
+import React from 'react';
 import { View, Text, ImageBackground, TouchableOpacity } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { styles } from './styles';
@@ -6,6 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useEffect } from 'react';
 import { useIsFocused } from '@react-navigation/native';
 import { useTabBarVisibility } from '../../context/TabBarVisibilityContext';
+import withLoading from '../../hoc/withLoading';
 
 const backgroundImage = require('../../assets/images/telainit.jpg');
 
@@ -40,4 +42,4 @@ const TelaInicial = () => {
   );
 };
 
-export default TelaInicial;
+export default withLoading(TelaInicial, [backgroundImage]);

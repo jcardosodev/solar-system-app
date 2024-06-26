@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, Image, Text, View } from "react-native";
+import { ActivityIndicator, Image, Text, TouchableOpacity, View } from "react-native";
 import styles from "./ImageOfTheDayStyles";
 import { ApodImageryProps, getApodTodayImagery } from "../../services/apodApi/apodApi";
-import { translateText, summarizeText } from "../../utils/textUtils/textUtils";
 
 const ImageOfTheDay = () => {
   const [apodData, setApodData] = useState<ApodImageryProps | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<boolean>(false);
 
   const fetchData = async () => {
     try {
@@ -24,8 +24,16 @@ const ImageOfTheDay = () => {
     fetchData();
   }, []);
 
+  const toggleExpand = () => {
+    setExpanded(!expanded);
+  };
+
   if (loading) {
-    return <ActivityIndicator size="large" color="#0000ff" />;
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
   }
 
   if (error) {
@@ -38,20 +46,25 @@ const ImageOfTheDay = () => {
 
   return (
     <View style={styles.container}>
-      {
-        apodData && (
-          <>
-            <Text style={styles.title}>{apodData.title}</Text>
-            <Image source={{ uri: apodData.url }} style={styles.image} />
-            <View style={styles.explanationContainer}>
-              <Text style={styles.explanation}>{apodData.explanation}</Text>
-            </View>
-            {apodData.copyright && (
-              <Text style={styles.copyright}>© {apodData.copyright}</Text>
-            )}
-          </>
-        )
-      }
+      {apodData && (
+        <>
+          <Text style={styles.title}>{apodData.title}</Text>
+          <Image source={{ uri: apodData.url }} style={styles.image} />
+          <View style={styles.explanationContainer}>
+            <Text style={styles.explanation}>
+              {expanded ? apodData.explanation : `${apodData.explanation.substring(0, 280)}...`}
+            </Text>
+            <TouchableOpacity onPress={toggleExpand}>
+              <Text style={styles.readMoreButtonText}>
+                {expanded ? "Mostrar menos" : "Ler mais"}
+              </Text>
+            </TouchableOpacity>
+          </View>
+          {apodData.copyright && (
+            <Text style={styles.copyright}>© {apodData.copyright}</Text>
+          )}
+        </>
+      )}
     </View>
   );
 }

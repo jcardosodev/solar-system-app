@@ -39,7 +39,7 @@ export const Login = () => {
     )
 
     if (!foundUser) {
-      Alert.alert("Erro", "E-mail ou senha incorretos.");
+      Alert.alert("Error", "E-mail ou senha incorretos.");
       return;
     }
 
