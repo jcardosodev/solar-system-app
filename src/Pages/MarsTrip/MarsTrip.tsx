@@ -45,8 +45,9 @@ const MarsTrip = () => {
 
   const handleSave = async () => {
     if (!usuarioLogado) {
-      Alert.alert("Alerta", 'Necessário login para acessar esta página. Você será redirecionado(a) automaticamente');
+      Alert.alert("Alerta", 'Necessário login para acessar esta página.');
       navigation.navigate('Login');
+      return;
     }
     if (
       name.length < 1 ||

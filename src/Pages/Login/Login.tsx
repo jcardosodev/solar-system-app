@@ -9,7 +9,7 @@ import { Rocket } from "../../components/Rocket/Rocket"
 import { useUserContext } from "../../context/UserContext";
 import { User } from "../../types/types";
 import { userApi } from "../../services/UserApi/UserApi";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { NavigationProp, useNavigation, useRoute } from "@react-navigation/native";
 import { RootTabParamList } from "../../Routes/types";
 
 export const Login = () => {
@@ -44,7 +44,9 @@ export const Login = () => {
     }
 
     setUsuarioLogado(foundUser);
-    Alert.alert("Sucesso", `Login efetuado com sucesso. Bem vindo(a) ${foundUser.nome}!`)
+    Alert.alert("Sucesso", `Login efetuado com sucesso. Bem vindo(a) ${foundUser.nome}!`);
+    setEmail('');
+    setPassword('');
   }
 
   return (
