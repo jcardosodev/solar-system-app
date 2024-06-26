@@ -8,6 +8,7 @@ const ImageOfTheDay = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<boolean>(false);
+  const genericSpaceImg = 'https://media.gettyimages.com/id/802785154/pt/foto/northern-lights-and-milky-way-over-lake-mcdonald-glacier-national-park-montana.jpg?s=612x612&w=0&k=20&c=xNkx2oejQ_jfaXpL51V2juYjdj4bGr1NYB2Q57wRjnQ='
 
   const fetchData = async () => {
     try {
@@ -44,12 +45,25 @@ const ImageOfTheDay = () => {
     );
   }
 
+  const onBuffer = () => {
+    console.log('onBuffer')
+  }
+
+  const onError = () => {
+    console.log('onError')
+  }
+
   return (
     <View style={styles.container}>
       {apodData && (
         <>
           <Text style={styles.title}>{apodData.title}</Text>
-          <Image source={{ uri: apodData.url }} style={styles.image} />
+          {
+            apodData.media_type === 'video' ?
+              <Image source={{ uri: genericSpaceImg }} style={styles.image} />
+            :
+              <Image source={{ uri: apodData.url }} style={styles.image} />
+          }          
           <View style={styles.explanationContainer}>
             <Text style={styles.explanation}>
               {expanded ? apodData.explanation : `${apodData.explanation.substring(0, 280)}...`}

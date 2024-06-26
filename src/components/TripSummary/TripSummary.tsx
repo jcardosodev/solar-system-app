@@ -24,7 +24,6 @@ const TripSummary = () => {
         setTripData(JSON.parse(data));
       }
       const response = await userApi.get(`users/${usuarioLogado?.id}`);
-      console.log(response.data);
     } catch (error) {
       console.error("Falha ao carregar dados de viagem:", error);
     } finally {
@@ -52,11 +51,12 @@ const TripSummary = () => {
       });
 
       if (response.status === 200) {
-        Alert.alert("Faça suas malas!", "Informações de viagem registradas.")
-      } 
+        Alert.alert("Faça suas malas!", "Informações de viagem registradas.");
+      }
+      navigation.navigate('MarsTrip');
     } catch (error) {
       console.log("Falha ao registrar informações de viagem:", error);
-      Alert.alert("Erro", 'Falha ao tentar registrar informações de viagem.')
+      Alert.alert("Erro", 'Falha ao tentar registrar informações de viagem.');
     }
   };
 
