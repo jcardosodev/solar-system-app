@@ -5,21 +5,15 @@
       "nome": "admin",
       "email": "admin@email.com",
       "senha": "admin",
-      "viagens": []
-    },
-    {
-      "id": "1720",
-      "nome": "dog",
-      "email": "dog@fhj.com",
-      "senha": "12345678",
-      "viagens": []
-    },
-    {
-      "id": "e9dd",
-      "nome": "eu",
-      "email": "eu@gmail.com",
-      "senha": "12345678",
-      "viagens": []
+      "viagens": [
+        {
+          "nome": "dadsafas",
+          "idade": "2435",
+          "companhia": "Cachorro Caramelo",
+          "duracao": "6 meses",
+          "preco": "R$2.500,000"
+        }
+      ]
     }
   ]
 }

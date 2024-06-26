@@ -47,6 +47,7 @@ export const Login = () => {
     Alert.alert("Sucesso", `Login efetuado com sucesso. Bem vindo(a) ${foundUser.nome}!`);
     setEmail('');
     setPassword('');
+    navigation.navigate('Home');
   }
 
   return (
