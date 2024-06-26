@@ -5,7 +5,24 @@
       "nome": "admin",
       "email": "admin@email.com",
       "senha": "admin"
+    },
+    {
+      "id": "5d03",
+      "nome": "Jonathan",
+      "email": "jonathan@email.com",
+      "senha": "1234",
+      "viagens": []
     }
   ],
-  "viagens": []
+  "viagens": [
+    {
+      "id": "5a8b",
+      "idUser": "5d03",
+      "nome": "Jonathan",
+      "idade": "34",
+      "companhia": "Cachorro Caramelo",
+      "duracao": "6 meses",
+      "preco": "R$2.500,000"
+    }
+  ]
 }

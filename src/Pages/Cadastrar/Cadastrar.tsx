@@ -14,7 +14,6 @@ export const Cadastrar = () => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [confirmPassword, setConfirmPassword] = useState('');
   const [users, setUsers] = useState<User[]>([]);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
@@ -22,7 +21,6 @@ export const Cadastrar = () => {
     try {
       const response = await userApi.get('users');
       setUsers(response.data);
-      console.log(response.data)
     } catch (error) {
       console.log("Failed to fetch users:", error);
     }
@@ -37,16 +35,10 @@ export const Cadastrar = () => {
       userName.length < 1 ||
       email.length < 1 ||
       password.length < 1
-      // confirmPassword.length < 1
     ) {
       Alert.alert("Error", "Um ou mais campos não foram preenchidos.")
       return;
     }
-
-    // if (password !== confirmPassword) {
-    //   Alert.alert("Erro", "Senhas são incompatíveis.");
-    //   return;
-    // }
 
     const userExists = users.some(user => user.email === email);
     if (userExists) {
@@ -65,7 +57,6 @@ export const Cadastrar = () => {
       setUserName('');
       setEmail('');
       setPassword('');
-      // setConfirmPassword('');
       getAllUsers();
       navigation.navigate('Login');
     } catch (error) {
@@ -97,8 +88,6 @@ export const Cadastrar = () => {
         <EmailInput value={email} onChangeText={setEmail} />
         <Text style={styles.label}>Senha</Text>
         <PasswordInput style={styles.input} value={password} onChangeText={setPassword} />
-        {/* <Text style={styles.label}>Confirme a senha</Text>
-        <PasswordInput style={styles.input} value={confirmPassword} onChangeText={setConfirmPassword} /> */}
       </View>
       <View style={styles.buttonContainer}>
         <Button
