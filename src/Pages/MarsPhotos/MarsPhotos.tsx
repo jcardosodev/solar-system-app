@@ -41,15 +41,16 @@ const MarsPhotosPage = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Rover: {photos[0].rover.name}</Text>
+      <Text style={styles.title}>Vislumbre o que espera por você em Marte!</Text>
       <FlatList
         data={photos}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <View style={styles.photoContainer}>
             <Image source={{ uri: item.img_src }} style={styles.image} />
-            <Text>{item.camera.full_name}</Text>
-            <Text>{item.earth_date}</Text>
+            <Text style={styles.subtitle}>Rover: {item.rover.name}</Text>
+            <Text style={styles.subtitle}>{item.camera.full_name}</Text>
+            <Text style={styles.subtitle}>{item.earth_date}</Text>
           </View>
         )}
       />
