@@ -155,7 +155,7 @@ function MyDrawer() {
         drawerInactiveTintColor: 'white'
       }}
     >
-      <Drawer.Screen name="Home" component={TabNavigator} options={{ headerShown: false }} />
+      <Drawer.Screen name="Navegação" component={TabNavigator} options={{ headerShown: false }} />
       <Drawer.Screen name="Sua Viagem à Marte" component={MarsTripStack} options={{ headerShown: false }} />
       <Drawer.Screen name="Login" component={LoginStack} options={{ headerShown: false }} />
       <Drawer.Screen name="Sistema Solar" component={SolarSystemStack} options={{ headerShown: false }} />
