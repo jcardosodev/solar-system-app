@@ -17,6 +17,7 @@ import { TabBarVisibilityProvider, useTabBarVisibility } from '../context/TabBar
 import MenuBar from '../components/MenuBar/MenuBar';
 import TripSummary from '../components/TripSummary/TripSummary';
 import { UserProvider } from '../context/UserContext';
+import MarsPhotosPage from '../Pages/MarsPhotos/MarsPhotos';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator<RootStackParamList>();
@@ -92,6 +93,7 @@ const CadastrarStack = () => (
     <Stack.Screen name="Cadastrar" component={Cadastrar} />
   </Stack.Navigator>
 );
+
 const ImageOfTheDayStack = () => (
   <Stack.Navigator
     screenOptions={({ navigation }) => ({
@@ -101,6 +103,18 @@ const ImageOfTheDayStack = () => (
     })}
   >
     <Stack.Screen name="ImageOfTheDay" component={ImageOfTheDay} />
+  </Stack.Navigator>
+);
+
+const MarsPhotosStack = () => (
+  <Stack.Navigator
+    screenOptions={({ navigation }) => ({
+      headerTransparent: true,
+      headerLeft: () => renderMenuButton(navigation),
+      headerTitle: '', 
+    })}
+  >
+    <Stack.Screen name="MarsPhotosPage" component={MarsPhotosPage} />
   </Stack.Navigator>
 );
 
@@ -161,6 +175,7 @@ function MyDrawer() {
       <Drawer.Screen name="Sistema Solar" component={SolarSystemStack} options={{ headerShown: false }} />
       <Drawer.Screen name='Cadastrar' component={CadastrarStack} options={{ headerShown: false }} />
       <Drawer.Screen name="Imagem do dia" component={ImageOfTheDayStack} options={{ headerShown: false }} />
+      <Drawer.Screen name="O que te espera em Marte" component={MarsPhotosStack} options={{ headerShown: false }} />
     </Drawer.Navigator>
   );
 }
