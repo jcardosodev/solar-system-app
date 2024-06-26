@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   form: {
-    marginTop: 40,
+    marginTop: -100,
     paddingHorizontal: 20,
     width: '100%',
     maxWidth: 400,
